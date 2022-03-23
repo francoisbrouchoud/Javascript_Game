@@ -2,4 +2,135 @@
 
 * {
     box-sizing: border-box;
+    font-family: 'Montserrat';
+    margin: 0;
 }
+
+header{
+
+}
+
+#topBar{
+    color: white;
+}
+
+h1, h2, h3{
+    font-family: 'Roboto Slab';
+
+}
+
+h2{
+    padding-top: 50px;
+    border-bottom: solid 1px;
+    border-color: rgba(146,146,146,90%);
+}
+
+#topBar h1{
+    padding-top: 60px;
+    text-align: center;
+    background: linear-gradient(rgba(255,255,255,1) 0%, rgba(255,158,0,1) 38%, rgba(255,29,0,1) 98%);
+    padding-bottom: 20px;
+}
+
+main{
+    display: flex;
+    margin: 2%;
+
+}
+
+section{
+
+    padding: 2%;
+}
+
+aside{
+    width: 50%;
+    height: 60%;
+    padding: 0;
+    margin: 0;
+    box-shadow: 0 0 2em grey;
+}
+
+aside h3{
+    background-color: #e36634;
+    color: white;
+    padding: 1%;
+    margin: 0;
+}
+
+aside p{
+   text-align: left;
+}
+
+aside ul{
+    list-style-type: none;
+    margin: 0;
+    padding-top: 1em;
+}
+
+aside li{
+    padding-bottom: 1em;
+
+}
+
+nav ul{
+    display: flex;
+    background-color: #454545;
+    width: 100%;
+    height: 2.4em;
+    font-weight: bold;
+}
+
+ul{
+    list-style-type: none;
+}
+
+li a{
+    color: white;
+    height: 100%;
+    display: block;
+    padding: 10px;
+}
+
+a{
+    color: orangered;
+    text-decoration: none;
+}
+
+a:hover{
+    color: orangered;
+    background-color: white;
+}
+
+#currentMenu{
+    color: orangered;
+    background-color: white;
+}
+
+p{
+    padding: 1%;
+}
+
+#author{
+    text-align: end;
+    font-style: italic;
+    color: #6e6e6e;
+}
+
+footer{
+    background-color: #454545;
+}
+
+footer img{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 1%;
+    padding-bottom: 1%;
+}
+
+
+
+
+
+
