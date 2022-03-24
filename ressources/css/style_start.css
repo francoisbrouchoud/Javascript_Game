@@ -111,7 +111,7 @@ p{
     padding: 1%;
 }
 
-#author{
+.author{
     text-align: end;
     font-style: italic;
     color: #6e6e6e;
