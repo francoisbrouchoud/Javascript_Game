@@ -133,6 +133,11 @@ footer img{
     padding-bottom: 1%;
 }
 
+.hamburger{
+    visibility: hidden;
+    width: 0px;
+}
+
 
 
 
