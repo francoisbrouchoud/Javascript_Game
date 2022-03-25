@@ -6,11 +6,7 @@
     margin: 0;
 }
 
-header{
-
-}
-
-#topBar{
+.main-header{
     color: white;
 }
 
@@ -25,7 +21,7 @@ h2{
     border-color: rgba(146,146,146,90%);
 }
 
-#topBar h1{
+.main-header h1{
     padding-top: 60px;
     text-align: center;
     background: linear-gradient(to bottom, #f7c4ab 0% , #e05c2b 80%, #D94618 80%, #E16133 100%);
@@ -92,17 +88,20 @@ li a{
     padding: 10px;
 }
 
+.active{
+    background-color: white;
+}
+
+.active a{
+    color: orangered;
+}
+
 a{
     color: orangered;
     text-decoration: none;
 }
 
 a:hover{
-    color: orangered;
-    background-color: white;
-}
-
-#currentMenu{
     color: orangered;
     background-color: white;
 }
