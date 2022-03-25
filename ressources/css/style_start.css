@@ -31,10 +31,10 @@ h2{
 }
 
 .main-header h1{
-    padding-top: 60px;
+    padding-top: 7%;
     text-align: center;
     background: linear-gradient(to bottom, #f7c4ab 0% , #e05c2b 80%, #D94618 80%, #E16133 100%);
-    padding-bottom: 20px;
+    padding-bottom: 2%;
 }
 
 main{
@@ -74,8 +74,7 @@ aside ul{
 }
 
 aside li{
-    padding-bottom: 1em;
-
+   padding-top: 3%;
 }
 
 nav ul{
