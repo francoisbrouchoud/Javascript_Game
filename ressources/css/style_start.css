@@ -28,7 +28,7 @@ h2{
 #topBar h1{
     padding-top: 60px;
     text-align: center;
-    background: linear-gradient(rgba(255,255,255,1) 0%, rgba(255,158,0,1) 38%, rgba(255,29,0,1) 98%);
+    background: linear-gradient(to bottom, #f7c4ab 0% , #e05c2b 80%, #D94618 80%, #E16133 100%);
     padding-bottom: 20px;
 }
 
