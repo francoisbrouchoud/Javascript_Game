@@ -6,6 +6,15 @@
     margin: 0;
 }
 
+body{
+    display:flex;
+    flex-direction: column;
+    max-width: 1240px;
+    height:100vh;
+    margin:auto;
+}
+
+
 .main-header{
     color: white;
 }
@@ -118,6 +127,7 @@ p{
 
 footer{
     background-color: #454545;
+    margin-top: auto;
 }
 
 footer img{
