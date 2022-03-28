@@ -139,6 +139,12 @@ footer img{
     width: 0px;
 }
 
+.maquetteImg{
+    margin-left: fill;
+    display: block;
+    padding-top: 15px;
+}
+
 
 
 
