@@ -30,7 +30,7 @@ h2{
     border-color: rgba(146,146,146,90%);
 }
 
-.main-header h1{
+h1{
     padding-top: 7%;
     text-align: center;
     background: linear-gradient(to bottom, #F7C4AB 0% , #E05C2B 80%, #D94618 80%, #E16133 100%);
@@ -135,8 +135,7 @@ footer img{
 }
 
 .hamburger{
-    visibility: hidden;
-    width: 0px;
+    display: none;
 }
 
 .maquetteImg{
