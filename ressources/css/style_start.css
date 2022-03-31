@@ -33,7 +33,7 @@ h2{
 .main-header h1{
     padding-top: 7%;
     text-align: center;
-    background: linear-gradient(to bottom, #f7c4ab 0% , #e05c2b 80%, #D94618 80%, #E16133 100%);
+    background: linear-gradient(to bottom, #F7C4AB 0% , #E05C2B 80%, #D94618 80%, #E16133 100%);
     padding-bottom: 2%;
 }
 
@@ -49,12 +49,12 @@ section{
 aside{
     display: block;
     margin: 2%;
-    width: 100%;
+    width: 60%;
     box-shadow: 0 0 2em grey;
 }
 
 aside h3{
-    background-color: #e36634;
+    background-color: #E36634;
     color: white;
     padding: 2% 2% 2% 5%;
     margin: 0;
@@ -139,6 +139,38 @@ footer img{
     width: 0px;
 }
 
+.maquetteImg{
+    margin-left: fill;
+    display: block;
+    padding-top: 15px;
+}
+
+table {
+    width:100%;
+    border-width: 2px;
+    border-color: #E36634;
+    border-collapse: collapse;
+    border-style: solid;
+}
+table th {
+    color:white;
+    background-color: #E36634;
+    border-width: 1px;
+    padding: 8px;
+    text-align:left;
+    border-width: 1px;
+    border-color: #E36634;
+    border-style: solid;
+}
+table td {
+    padding: 8px;
+    border-width: 1px;
+    border-color: #E36634;
+    border-style: solid;
+}
+table tr:hover {
+    background-color:#F7C4AB;
+}
 
 
 
