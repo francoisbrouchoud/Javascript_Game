@@ -143,6 +143,7 @@ footer img{
     margin-right: auto;
     display: flex;
     padding-top: 15px;
+    max-width: 100%;
 }
 
 table {
