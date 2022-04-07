@@ -43,7 +43,7 @@ main{
 }
 
 section{
-    padding: 0% 2% 0% 2%;
+    padding: 0 2% 0 2%;
 }
 
 aside{
@@ -66,7 +66,7 @@ aside p{
 
 aside ul{
     list-style-type: none;
-    padding: 0% 2% 12% 7%;
+    padding: 0 2% 12% 7%;
 }
 
 aside li{
@@ -170,7 +170,6 @@ table th {
     border-width: 1px;
     padding: 8px;
     text-align:left;
-    border-width: 1px;
     border-color: #E36634;
     border-style: solid;
 }
@@ -186,6 +185,12 @@ table tr:hover {
 
 table tr a:hover  {
     background-color:#F7C4AB;
+}
+
+#mockup img {
+    height: 60vh;
+    display: block;
+    margin: 20px auto;
 }
 
 
