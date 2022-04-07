@@ -199,8 +199,18 @@ table tr a:hover  {
     width: 30vw;
 }
 
+.perso-stands{
+    display: grid;
+    grid-template-columns: auto auto auto auto auto auto auto;
+}
+
 .perso {
     height: 100px;
+}
+
+#mockup h4 {
+    text-align: center;
+    margin-top: 50px;
 }
 
 
