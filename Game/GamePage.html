@@ -1,10 +1,71 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Game - Foire du Valais virtuelle</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="ressources/css/style.css">
+    <style>
+        canvas {
+            background:url(ressources/images/Tutoriel.jpg);
+            background-size: contain;
+        }
+        </style>
 </head>
 <body>
-
+<canvas id="caneva_game" width="540px" height="405px"></canvas>
 </body>
+<script>
+    //Récupération du canvas et du contexte
+    var canvas = document.getElementById("caneva_game");
+    let context = canvas.getContext('2d');
+    var w = canvas.width;
+    var h = canvas.height;
+    var xPerso = w/2 -25;
+    var yPerso = h/2 -25;
+    var pasPerso = 5;
+    function draw_personnage(x,y){
+        context.clearRect(xPerso,yPerso,xPerso + 50 ,yPerso +50 );
+
+        var image= new Image();
+        image.src ="ressources/images/Perso_principal.png";
+    
+        context.drawImage(image,x,y,50,50)
+        context.stroke();
+            
+        //Restauration du context
+        context.restore();
+   }
+    function drawBgImg() {
+        canvas.style.backgroundImage = "url(ressources/images/Gilliard.jpg)";
+    }
+   document.addEventListener('keydown', (e) => {
+       switch(e.key){
+            case 'w':
+                yPerso -=pasPerso;
+                break;
+            case 'a':
+                xPerso -=pasPerso;
+                break;
+            case 's':
+                yPerso +=pasPerso;
+                break;
+            case 'd':
+                xPerso +=pasPerso;
+                break;
+       }
+    });
+    
+   // draw();
+		var frame = function(){
+            if(xPerso>w || xPerso<0 || yPerso>h || yPerso<0){
+                drawBgImg();
+                xPerso = w/2 -25;
+                yPerso = h/2 -25;
+            }
+            draw_personnage(xPerso,yPerso);
+		}
+		setInterval(frame, 1000.0/60.0);
+    
+</script>
 </html>
