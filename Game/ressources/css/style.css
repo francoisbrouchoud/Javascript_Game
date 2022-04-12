@@ -1,0 +1,49 @@
+*{
+    font-family: 'Helvetica', 'Arial';
+}
+
+table, th, td{
+    padding: 9px;
+    border: 1px solid black;
+    border-collapse: collapse;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+table{
+    margin-top: 40px;
+    border: 2px black solid;
+}
+
+h1{
+    text-align: center;
+    margin-top: 60px;
+}
+
+th{
+    height: 12px;
+}
+
+.PseudoRow{
+    width: 160px;
+}
+.TimerRow{
+    width: 75px;
+}
+.JourRow{
+    width: 95px;
+}
+
+button{
+    margin-top: 30px;
+    padding: 5px;
+    background-color: transparent;
+    border: 1px solid black;
+    border-radius: 6px;
+}
+
+.Buttons{
+    margin: auto;
+    text-align: center;
+}
