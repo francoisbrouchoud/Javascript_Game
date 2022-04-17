@@ -6,7 +6,8 @@
 .home-page {
     background-image: url("../images/fdv_background.jpg");
     background-color: black;
-    margin: 5%;
+    margin-top: 5%;
+
 }
 
 .saisie{
@@ -86,6 +87,10 @@ button{
     background-color: deepskyblue;
 }
 
+.quitter:hover{
+    background-color: orangered;
+}
+
 
 table, th, td{
     padding: 9px;
@@ -94,6 +99,7 @@ table, th, td{
     margin-left: auto;
     margin-right: auto;
     text-align: center;
+    font-size: 1.2em;
 }
 
 table{
@@ -101,22 +107,18 @@ table{
     border: 2px black solid;
 }
 
-h1{
-    text-align: center;
-    margin-top: 60px;
-}
 
 th{
     height: 12px;
 }
 
-.PseudoRow{
+.pseudoRow{
     width: 160px;
 }
-.TimerRow{
+.timerRow{
     width: 75px;
 }
-.JourRow{
+.jourRow{
     width: 95px;
 }
 
@@ -128,8 +130,5 @@ button{
     border-radius: 6px;
 }
 
-.Buttons{
-    margin: auto;
-    text-align: center;
-}
+
 
