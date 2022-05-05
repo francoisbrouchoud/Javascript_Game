@@ -12,8 +12,21 @@
         }
         </style>
 </head>
-<body>
-<canvas id="caneva_game" width="540px" height="405px"></canvas>
+<body class="gameBody">
+    <div class="flex">
+        <div id="state">
+            <p>Taux d'alcoolémie</p> <input type="range" min="0" max="100" value="60"/>
+            <p>Timer</p><p>3 min 45 sec </p>
+            <div>
+                <p>Salut ! voici blabla...</p>
+            </div>
+        </div>
+        <div id="mission">
+            <h2>Mission 1</h2>
+            <p>Vous devez faire ...</p>
+        </div>
+    </div>
+    <canvas id="caneva_game" width="540px" height="405px"></canvas>
 </body>
 <script>
     //Récupération du canvas et du contexte
