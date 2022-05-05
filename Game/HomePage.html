@@ -21,8 +21,12 @@
             </td>
         </tr>
         <tr>
-            <td><label for="date-naissance">Date de naissance</label></td>
-            <td><input type="date" id="date-naissance" name="date-naissance"></td>
+            <form name="inscription" onsubmit=" return checkAge()" method="post">
+                <td><label for="date-naissance">Date de naissance</label></td>
+                <td><input type="date" id="date-naissance" name="date-naissance"></td>
+                    <input type="submit" value="Submit">
+            </form>
+
         </tr>
     </table>
 
@@ -35,6 +39,26 @@
 
     <!-- Calculate distance from the user to the Foire du Valais -->
     <script>
+        function checkAge(){
+            let x = document.forms["inscription"]["date-naissance"].value;
+            var now = new Date().getTime();
+            alert(now);
+            alert(x);
+            var difference = now-x;
+            alert(difference);
+            var age = Math.floor(difference/(1000*60*60*24*365));
+
+            alert(age);
+            if(age<18){
+                alert("Vous n'avez pas l'âge de jouer !");
+                return false;
+            }
+
+            else
+                alert("ça fonctionne.")
+        }
+
+
         const x = document.getElementById("distanceFoire");
 
         function getDistance() {
