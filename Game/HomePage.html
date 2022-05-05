@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="ressources/css/style.css">
 </head>
-<body class="home-page">
+<body class="home-page" onload="getDistance()">
 
 <div class="saisie">
     <h1> Foire du Valais virtuelle</h1>
@@ -21,8 +21,12 @@
             </td>
         </tr>
         <tr>
-            <td><label for="date-naissance">Date de naissance</label></td>
-            <td><input type="date" id="date-naissance" name="date-naissance"></td>
+            <form name="inscription" onsubmit=" return checkAge()" method="post">
+                <td><label for="date-naissance">Date de naissance</label></td>
+                <td><input type="date" id="date-naissance" name="date-naissance"></td>
+                    <input type="submit" value="Submit">
+            </form>
+
         </tr>
     </table>
 
@@ -30,6 +34,65 @@
         <button class="jouer">Jouer</button>
         <button class="regles">Règles</button>
     </div>
+
+    <p id="distanceFoire"></p>
+
+    <!-- Calculate distance from the user to the Foire du Valais -->
+    <script>
+        function checkAge(){
+            let x = document.forms["inscription"]["date-naissance"].value;
+            var now = new Date().getTime();
+            alert(now);
+            alert(x);
+            var difference = now-x;
+            alert(difference);
+            var age = Math.floor(difference/(1000*60*60*24*365));
+
+            alert(age);
+            if(age<18){
+                alert("Vous n'avez pas l'âge de jouer !");
+                return false;
+            }
+
+            else
+                alert("ça fonctionne.")
+        }
+
+
+        const x = document.getElementById("distanceFoire");
+
+        function getDistance() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(calculateDistance);
+            }
+            else {
+                x.innerHTML = "La géolocalisation ne fonctionne pas. :(";
+            }
+        }
+        
+        function calculateDistance(position) {
+            const latitudeFDV = 46.09802009498199;
+            const longitudeFDV = 7.077710660815801;
+            const earthRadius = 6371;
+
+            var myLatitude = position.coords.latitude;
+            var myLongitude = position.coords.longitude;
+            var dLatitude = convertDegreeToRadian(latitudeFDV-myLatitude);
+            var dLongitude = convertDegreeToRadian(longitudeFDV-myLongitude);
+
+            //Haversine Formula https://www.igismap.com/haversine-formula-calculate-geographic-distance-earth/
+            var a = Math.sin(dLatitude/2) * Math.sin(dLatitude/2) + Math.cos(convertDegreeToRadian(myLatitude)) * Math.cos(convertDegreeToRadian(latitudeFDV)) * Math.sin(dLongitude/2) * Math.sin(dLongitude/2);
+            var c = 2*Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+            var distance = earthRadius*c;
+            var roundedDistance = Math.round(distance);
+
+            x.innerHTML = "La Foire du Valais se situe à " + roundedDistance +  " km de chez vous.";
+        }
+
+        function convertDegreeToRadian(deg) {
+            return deg * (Math.PI/180)
+        }
+    </script>
 </div>
 </body>
 </html>

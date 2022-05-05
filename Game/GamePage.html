@@ -73,6 +73,8 @@
 		var frame = function(){
             if(xPerso>w || xPerso<0 || yPerso>h || yPerso<0){
                 drawBgImg();
+
+                //Faire continuer le personnage dans la lignée
                 xPerso = w/2 -25;
                 yPerso = h/2 -25;
             }
