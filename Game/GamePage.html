@@ -15,7 +15,7 @@
 <body class="gameBody">
     <div class="flex">
         <div id="state">
-            <p>Taux d'alcoolémie</p> <input type="range" min="0" max="100" value="60"/>
+            <p>Taux d'alcoolémie</p> <input id="alcoolRate" type="range" min="0" max="100" value="60"/>
             <p>Timer</p><p>3 min 45 sec </p>
             <div>
                 <p>Salut ! voici blabla...</p>
@@ -28,57 +28,45 @@
     </div>
     <canvas id="caneva_game" width="540px" height="405px"></canvas>
 </body>
-<script>
+
+<script type="module">
+    import Player from './ressources/scripts/Player.js';
+
     //Récupération du canvas et du contexte
     var canvas = document.getElementById("caneva_game");
     let context = canvas.getContext('2d');
     var w = canvas.width;
     var h = canvas.height;
-    var xPerso = w/2 -25;
-    var yPerso = h/2 -25;
-    var pasPerso = 5;
-    function draw_personnage(x,y){
-        context.clearRect(xPerso,yPerso,xPerso + 50 ,yPerso +50 );
+    var player = new Player(18,"Steve",w,h);
 
-        var image= new Image();
-        image.src ="ressources/images/Perso_principal.png";
-    
-        context.drawImage(image,x,y,50,50)
-        context.stroke();
-            
-        //Restauration du context
-        context.restore();
+    function draw(x,y){
+        context.clearRect(0,0,w ,h);
+
+        player.draw(context);
+   }
+   function updateInfo(){
+        document.querySelector("#alcoolRate").val = player.alcoolRate;
    }
     function drawBgImg() {
         canvas.style.backgroundImage = "url(ressources/images/Gilliard.jpg)";
     }
    document.addEventListener('keydown', (e) => {
-       switch(e.key){
-            case 'w':
-                yPerso -=pasPerso;
-                break;
-            case 'a':
-                xPerso -=pasPerso;
-                break;
-            case 's':
-                yPerso +=pasPerso;
-                break;
-            case 'd':
-                xPerso +=pasPerso;
-                break;
-       }
+       player.move(e.key);
     });
-    
-   // draw();
-		var frame = function(){
-            if(xPerso>w || xPerso<0 || yPerso>h || yPerso<0){
+    function checkColision(){
+        let {x,y}=player.getPosition();
+        if( x>w || x<0 || y>h || y<0){
                 drawBgImg();
 
                 //Faire continuer le personnage dans la lignée
-                xPerso = w/2 -25;
-                yPerso = h/2 -25;
+                player.changePage(w/2 -25, h/2 -25);
             }
-            draw_personnage(xPerso,yPerso);
+    }
+		var frame = function(){
+            
+            checkColision();
+            draw();
+            updateInfo();
 		}
 		setInterval(frame, 1000.0/60.0);
     
