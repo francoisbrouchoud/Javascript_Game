@@ -1,9 +1,12 @@
+import Obstacle from './ressources/scripts/Obstacle.js';
 
-public class Room{
-    Obstacle obsacle; // pour chaque obstacle, on va dire quelle action on va déclancher -> liste
+export default class Room{
+    obsacle; // pour chaque obstacle, on va dire quelle action on va déclancher -> liste
 
-    var wall; // tableau de bool pour savoir s'il peut passer ou pas
-    var name;
-    var image;
+    wall; // tableau de bool pour savoir s'il peut passer ou pas
+    name;
+    image;
 
+    constructor() {
+    }
 }

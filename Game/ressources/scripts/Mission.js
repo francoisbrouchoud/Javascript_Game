@@ -1,6 +1,9 @@
-public class mission{
+export default class mission{
 
-    var title;
-    var task; //liste de taches
-    var room; // pièces quelle a -> liste à 2d
+    title;
+    task; //liste de taches
+    room; // pièces quelle a -> liste à 2d
+
+    constructor() {
+    }
 }

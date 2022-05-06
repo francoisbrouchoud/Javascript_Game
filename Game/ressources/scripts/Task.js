@@ -1,7 +1,9 @@
-public class Task{
+export default class Task{
 
-    var active; //est-ce quelle est active ou pas
-    var room; //quelle salle qui lui est associéé
-    var desciption;
+    active; //est-ce quelle est active ou pas
+    room; //quelle salle qui lui est associéé
+    desciption;
 
+    constructor() {
+    }
 }
