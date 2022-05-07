@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="ressources/css/style.css">
     <style>
         canvas {
-            background:url(ressources/images/Tutoriel.jpg);
+            background:url(ressources/images/Salles/entree.jpg);
             background-size: contain;
         }
         </style>
@@ -48,10 +48,13 @@
         document.querySelector("#alcoolRate").val = player.alcoolRate;
    }
     function drawBgImg() {
-        canvas.style.backgroundImage = "url(ressources/images/Gilliard.jpg)";
+        canvas.style.backgroundImage = "url(ressources/images/Salles/gilliard.jpg)";
     }
    document.addEventListener('keydown', (e) => {
        player.move(e.key);
+    });
+    document.addEventListener('keyup', (e) => {
+        player.stopMove();
     });
     function checkColision(){
         let {x,y}=player.getPosition();
