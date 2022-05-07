@@ -59,6 +59,9 @@ export default class Player {
         return {x:this.posX ,y:this.posY, w:this.imageWidth, h:this.imageHeight}
     }
     // boire
+    drink(){
+        
+    }
     // dormir
     // manger
     // dessiner le personnage

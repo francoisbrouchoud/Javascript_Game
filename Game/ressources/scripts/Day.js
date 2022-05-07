@@ -1,3 +1,5 @@
+import {mission1} from './Mission';
+
 export default class Day{
 
     name;
@@ -6,6 +8,13 @@ export default class Day{
     mission; //liste de mission du jour
     time; // temps disponible pour la journée (en secondes)
 
-    constructor() {
+    constructor(id, name, text, time, mission) {
+        this.id = id;
+        this.name = name;
+        this.text = text;
+        this.time = time;
+        this.mission = mission;
     }
 }
+
+export const day1 = new Day(1, "lundi", "text", 120, [mission1]);

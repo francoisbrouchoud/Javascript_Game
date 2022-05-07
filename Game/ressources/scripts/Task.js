@@ -4,6 +4,9 @@ export default class Task{
     room; //quelle salle qui lui est associéé
     desciption;
 
-    constructor() {
+    constructor(active, room, desciption) {
+        this.active = active;
+        this.room = room;
+        this.desciption = desciption;
     }
 }
