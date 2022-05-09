@@ -21,6 +21,10 @@ export default class Obstacle{
         return {obsX:this.posX ,obsY:this.posY, obsW:this.width, obsH:this.height}
     }
 
+    getStatus(){
+        return{status:this.active}
+    }
+
     draw(context){
 
         var image= new Image();

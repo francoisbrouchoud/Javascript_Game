@@ -56,7 +56,7 @@ export default class Player {
         this.posY = y; 
     }
     getPosition(){
-        return {x:this.posX ,y:this.posY, w:this.imageWidth, h:this.imageHeight}
+        return {x:this.posX ,y:this.posY, playerW:this.imageWidth, playerH:this.imageHeight}
     }
     // boire
     drink(){
