@@ -31,6 +31,7 @@
 
 <script type="module">
     import Player from './ressources/scripts/Player.js';
+    import Obstacle from "./ressources/scripts/Obstacle.js";
 
     //Récupération du canvas et du contexte
     var canvas = document.getElementById("caneva_game");
@@ -38,11 +39,13 @@
     var w = canvas.width;
     var h = canvas.height;
     var player = new Player(18,"Steve",w,h);
+    var obstacle = new Obstacle(45,0,80,120,true,null);
 
     function draw(x,y){
         context.clearRect(0,0,w ,h);
 
         player.draw(context);
+        obstacle.draw(context);
    }
    function updateInfo(){
         document.querySelector("#alcoolRate").val = player.alcoolRate;
@@ -56,18 +59,25 @@
     document.addEventListener('keyup', (e) => {
         player.stopMove();
     });
-    function checkColision(){
+    function checkCollision(){
         let {x,y}=player.getPosition();
+
         if( x>w || x<0 || y>h || y<0){
                 drawBgImg();
 
                 //Faire continuer le personnage dans la lignée
                 player.changePage(w/2 -25, h/2 -25);
             }
+
+        let {obsX,obsY,obsW,obsH} = obstacle.getPosition();
+
+        if(x-(obsX+obsW)<=0 && y-(obsY+obsH)<=0){
+            console.log("touché");
+        }
     }
 		var frame = function(){
             
-            checkColision();
+            checkCollision();
             draw();
             updateInfo();
 		}
