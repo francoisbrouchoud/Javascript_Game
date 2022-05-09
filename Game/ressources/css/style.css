@@ -129,19 +129,54 @@ button{
     border: 1px solid black;
     border-radius: 6px;
 }
-.flex{
+header {
+    margin-top: 20px;
     display: flex;
     flex-direction: row;
+    width: 720px;
+    margin-bottom: 10px;
+
+}
+.caption{
+    font-weight: bold;
 }
 #mission{
- width: 40%;
+    width: 40%;
+    border: 2px solid black;
+    padding: 5px;
 }
+
+#state > p{
+    margin: 5px;
+}
+
+#mission > h2{
+    text-align: center;
+    margin: 0;
+}
+
 #state{
     width: 60%;
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
+    justify-content: space-between;
 }
+.conversation{
+    border: 2px solid black;
+    display: flex;
+    flex-direction: row;
+    margin: 5px 5px 0 0;
+    padding: 5px;
+    align-items: center;
+}
+
+.conversation > p{
+    flex: 1;
+    margin: 0;
+
+}
+
 #state p,#state input{
     width: 45%;
 }
