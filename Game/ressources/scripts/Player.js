@@ -13,12 +13,12 @@ export default class Player {
     switchMoveImg=0;
     hasHat; //Est-ce qu'il possède un chapeau ou pas ?
     // constante
-     persoPath = "ressources/images/Steve/SteveFace.jpg";
-     persoMvPath = "ressources/images/Steve/SteveDepl0.jpg";
-     persoHatPath = "ressources/images/Steve/SteveChapeau.jpg";
-     persoHatMvPath = "ressources/images/Steve/SteveDepl0ch.jpg";
+     persoPath = "ressources/images/Steve/SteveFace.png";
+     persoMvPath = "ressources/images/Steve/SteveDepl0.png";
+     persoHatPath = "ressources/images/Steve/SteveChapeau.png";
+     persoHatMvPath = "ressources/images/Steve/SteveDepl0ch.png";
      imageWidth=50;
-     imageHeight=50;
+     imageHeight=62;
      pasPerso = 5;
 
     constructor(name, age, w, h) {
@@ -53,14 +53,14 @@ export default class Player {
     }
     changePage(x,y){
         this.posX = x;
-        this.posY = y; 
+        this.posY = y;
     }
     getPosition(){
         return {x:this.posX ,y:this.posY, playerW:this.imageWidth, playerH:this.imageHeight}
     }
     // boire
     drink(){
-        
+
     }
     // dormir
     // manger
@@ -91,7 +91,7 @@ export default class Player {
 
         context.drawImage(image,this.posX,this.posY,this.imageWidth,this.imageHeight)
         context.stroke();
-            
+
         //Restauration du context
         context.restore();
    }
