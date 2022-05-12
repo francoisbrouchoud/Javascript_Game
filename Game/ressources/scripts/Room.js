@@ -1,4 +1,13 @@
-import Obstacle from './Obstacle.js';
+import Obstacle, {
+    abricoolGillard,
+    afterGourmand, arret,
+    bancomat,
+    billeterie,
+    bubbleTea, busPorteArriere, busPorteAvant, entreeComptoir,
+    fondue,
+    glacier,
+    marrons, nourriture, nouvellisteRhonefm, swisscomGpcornutPot
+} from './Obstacle.js';
 
 export default class Room{
     obsacle; // pour chaque obstacle, on va dire quelle action on va déclancher -> liste
@@ -30,3 +39,42 @@ export const room2 = new Room("room2","rhonefm.jpg",
         player.drink();
     })
 ]);
+
+export const abricool = new Room("Abricool", "abricool.jpg", [abricoolGillard, glacier, marrons, bubbleTea, fondue]);
+
+export const gillard = new Room("Gillard", "gillard.jpg", [abricoolGillard, glacier, marrons, bubbleTea, fondue]);
+
+export const after = new Room("After", "after.jpg", [afterGourmand]);
+
+export const espaceGourmand = new Room("Espace Gourmand", "espacegourmand.jpg", [afterGourmand]);
+
+export const entree = new Room("Entrée", "entree.jpg", [bancomat, entreeComptoir, billeterie]);
+
+export const swisscom = new Room("Swisscom", "swisscom.jpg", [swisscomGpcornutPot, nourriture]);
+
+export const gpCornut = new Room("Grand-père Conrnut", "gpcornut.jpg", [swisscomGpcornutPot, nourriture]);
+
+export const potChambre = new Room("Pot de chambre", "potdechambre.jpg", [swisscomGpcornutPot, nourriture]);
+
+export const lunabus = new Room("Lunabus", "lunabus.jpg", [arret, busPorteArriere, busPorteAvant]);
+
+export const nouvelliste = new Room("Nouvelliste", "nouvelliste.jpg", [nouvellisteRhonefm]);
+
+export const rhoneFm = new Room("Rhône FM", "rhonefm.jpg", [nouvellisteRhonefm]);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
