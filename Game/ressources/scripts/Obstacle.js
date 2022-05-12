@@ -38,3 +38,63 @@ export default class Obstacle{
         context.restore();
     }
 }
+
+export const abricoolGillard = new Obstacle(416,333,884,347, true, (player)=>{
+    player.drink();
+});
+
+export const glacier = new Obstacle(1343,342,226,325, true, (player)=>{
+    player.drink();
+});
+
+export const marrons = new Obstacle(270,1035,226,325, true, (player)=>{
+    player.drink();
+});
+
+export const bubbleTea = new Obstacle(515,1039,226,325, true, (player)=>{
+    player.drink();
+});
+
+export const fondue = new Obstacle(826,1019,884,347, true, (player)=>{
+    player.drink();
+});
+
+export const after = new Obstacle(303,0,1541,595, true, (player)=>{
+    player.drink();
+});
+
+export const bancomat = new Obstacle(134,0,226,325, true, (player)=>{
+    player.drink();
+});
+
+export const entree = new Obstacle(571,0,977,381, true, (player)=>{
+    player.drink();
+});
+
+export const billeterie = new Obstacle(1064,929,920,354, true, (player)=>{
+    player.drink();
+});
+
+export const swisscomGpcornutPot = new Obstacle(346,853,920,354, true, (player)=>{
+    player.drink();
+});
+
+export const nourriture = new Obstacle(946,284,920,354, true, (player)=>{
+    player.drink();
+});
+
+export const arret = new Obstacle(1243,29,479,313, true, (player)=>{
+    player.drink();
+});
+
+export const busPorteArriere = new Obstacle(887,723,91,257, true, (player)=>{
+    player.drink();
+});
+
+export const busPorteAvant = new Obstacle(1193,889,91,257, true, (player)=>{
+    player.drink();
+});
+
+export const nouvellisteRhonefm = new Obstacle(661,317,920,354, true, (player)=>{
+    player.drink();
+});
