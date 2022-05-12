@@ -20,8 +20,9 @@ export default class Game {
         this.boardWidth = w;
     }
 
+    // voir ou mettre?
     drawBgImg() {
-        canvas.style.backgroundImage = "url(ressources/images/Salles/gilliard.jpg)";
+        canvas.style.backgroundImage = "url("+this.room.image+")";
     }
 
     checkCollision() {
@@ -59,5 +60,15 @@ export default class Game {
                 //Si l'obstacle est actif, ça déclanchera l'action de l'osbstacle
             }
         }
+    }
+
+    checkEndGame(){
+        //check alcohol
+
+        //check time
+    }
+
+    validationTask(){
+        // check task and change mission if need and room and day?
     }
 }

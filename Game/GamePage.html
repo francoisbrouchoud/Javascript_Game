@@ -69,6 +69,7 @@
     (function frame() {
         requestAnimFrame(frame)
         game.checkCollision();
+        game.checkEndGame();
         draw();
         updateInfo();
     })();
