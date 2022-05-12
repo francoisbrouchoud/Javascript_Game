@@ -24,17 +24,4 @@ export default class Obstacle{
     getStatus(){
         return{status:this.active}
     }
-
-    draw(context){
-
-        var image= new Image();
-        image.src = "ressources/images/Steve/SteveFace.png";
-
-
-        context.drawImage(image,this.posX,this.posY,this.width,this.height)
-        context.stroke();
-
-        //Restauration du context
-        context.restore();
-    }
 }
