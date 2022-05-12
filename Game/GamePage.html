@@ -7,101 +7,71 @@
     <link rel="stylesheet" href="ressources/css/style.css">
     <style>
         canvas {
-            background:url(ressources/images/Salles/entree.jpg);
+            background: url(ressources/images/Salles/entree.jpg);
             background-size: contain;
         }
-        </style>
+    </style>
 </head>
 <body class="gameBody">
-    <header>
-        <div id="state">
-            <p class="caption">Taux d'alcoolémie</p> <input id="alcoolRate" type="range" min="0" max="100" value="60"/>
-            <p class="caption">Timer</p><p>3 min 45 sec </p>
-            <div class="conversation">
-                <p>Salut ! voicn bkjfdnjgikg fujsdinnkjfdln dfjs jdsfs ujfdipjds fiujdspjafupidsan lfdsujipn</p>
-            </div>
+<header>
+    <div id="state">
+        <p class="caption">Taux d'alcoolémie</p> <input id="alcoolRate" type="range" min="0" max="100" value="60"/>
+        <p class="caption">Timer</p>
+        <p>3 min 45 sec </p>
+        <div class="conversation">
+            <p>Salut ! voicn bkjfdnjgikg fujsdinnkjfdln dfjs jdsfs ujfdipjds fiujdspjafupidsan lfdsujipn</p>
         </div>
-        <div id="mission">
-            <h2>Mission 1</h2>
-            <p>Vous devez devez aller au stand Morand et acheter une bouteille de Willamine et la descendre cul sec.</p>
-        </div>
-    </header>
-    <canvas id="caneva_game" width="720px" height="540px"></canvas>
+    </div>
+    <div id="mission">
+        <h2>Mission 1</h2>
+        <p>Vous devez devez aller au stand Morand et acheter une bouteille de Willamine et la descendre cul sec.</p>
+    </div>
+</header>
+<canvas id="caneva_game" width="720px" height="540px"></canvas>
 </body>
 
 <script type="module">
     import Player from './ressources/scripts/Player.js';
-    import Obstacle from "./ressources/scripts/Obstacle.js";
+    import Game from "./ressources/scripts/Game.js";
 
     //Récupération du canvas et du contexte
     var canvas = document.getElementById("caneva_game");
     let context = canvas.getContext('2d');
     var w = canvas.width;
     var h = canvas.height;
-    var player = new Player(18,"Steve",w,h);
-    var obstacle = new Obstacle(45,0,80,120,true,null);
 
-    function draw(x,y){
-        context.clearRect(0,0,w ,h);
+    var game = new Game(new Player(18, "Steve", w, h), h, w);
 
-        player.draw(context);
-        obstacle.draw(context);
-   }
-   function updateInfo(){
-        document.querySelector("#alcoolRate").val = player.alcoolRate;
-   }
-    function drawBgImg() {
-        canvas.style.backgroundImage = "url(ressources/images/Salles/gilliard.jpg)";
+    function draw() {
+        context.clearRect(0, 0, w, h);
+        game.player.draw(context);
     }
-   document.addEventListener('keydown', (e) => {
-       player.move(e.key);
+
+    function updateInfo() {
+        document.querySelector("#alcoolRate").val = game.player.alcoolRate;
+    }
+
+    document.addEventListener('keydown', (e) => {
+        game.player.move(e.key);
     });
     document.addEventListener('keyup', (e) => {
-        player.stopMove();
+        game.player.stopMove();
     });
-    function checkCollision(){
-        let {x,y,playerW,playerH}=player.getPosition();
 
+    window.requestAnimFrame = (function () {
+        return window.requestAnimationFrame ||
+            window.webkitRequestAnimationFrame ||
+            window.mozRequestAnimationFrame ||
+            function (callback) {
+                window.setTimeout(callback, 1000 / 60);
+            };
+    })();
+    (function frame() {
+        requestAnimFrame(frame)
+        game.checkCollision();
+        draw();
+        updateInfo();
+    })();
 
-        //Il va vers la gauche
-        if(x<0){
-            drawBgImg();
-            player.changePage(w-playerW,y);
-        }
-        //Il va en haut
-        if(y<0){
-            drawBgImg();
-            player.changePage(x, h-playerH);
-        }
-        //Il va en bas
-        if(y>h-playerH){
-            drawBgImg();
-            player.changePage(x,0);
-        }
-        //Il va à droite
-        if(x>w-playerW){
-            drawBgImg();
-            player.changePage(0,y);
-        }
-
-
-
-        let {obsX,obsY,obsW,obsH} = obstacle.getPosition();
-        let status = obstacle.getStatus();
-
-        if(x-(obsX+obsW)<=0 && y-(obsY+obsH)<=0){
-            console.log("touché");
-
-            //Si l'obstacle est actif, ça déclanchera l'action de l'osbstacle
-        }
-    }
-		var frame = function(){
-            
-            checkCollision();
-            draw();
-            updateInfo();
-		}
-		setInterval(frame, 1000.0/60.0);
-    
 </script>
 </html>
