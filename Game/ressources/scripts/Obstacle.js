@@ -59,7 +59,7 @@ export const fondue = new Obstacle(826,1019,884,347, true, (player)=>{
     player.drink();
 });
 
-export const after = new Obstacle(303,0,1541,595, true, (player)=>{
+export const afterGourmand = new Obstacle(303,0,1541,595, true, (player)=>{
     player.drink();
 });
 
@@ -67,7 +67,7 @@ export const bancomat = new Obstacle(134,0,226,325, true, (player)=>{
     player.drink();
 });
 
-export const entree = new Obstacle(571,0,977,381, true, (player)=>{
+export const entreeComptoir = new Obstacle(571,0,977,381, true, (player)=>{
     player.drink();
 });
 
