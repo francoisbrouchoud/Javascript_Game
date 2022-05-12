@@ -28,7 +28,7 @@ export default class Obstacle{
     draw(context){
 
         var image= new Image();
-        image.src = "ressources/images/Steve/SteveFace.jpg";
+        image.src = "ressources/images/Steve/SteveFace.png";
 
 
         context.drawImage(image,this.posX,this.posY,this.width,this.height)
