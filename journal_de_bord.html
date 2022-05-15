@@ -13,7 +13,7 @@
     <nav>
         <ul>
             <li class="hamburger">
-                <img src="ressources/images/hamburger_icon.svg" alt="Menu for mobile">
+                <a href="javascript:void(0);" onclick="displayMenu()"><img src="ressources/images/hamburger_icon.svg" alt="Menu for mobile" ></a>
             </li>
             <!-- Different display depending on the screen and the hamburger button -->
             <div id="menu-links">
@@ -93,6 +93,18 @@
     <footer>
         <img id="logo" src="ressources/images/logo.png" alt="Logo HEVS">
     </footer>
+
+<script>
+    function displayMenu() {
+        var x = document.getElementById("menu-links");
+        if (x.style.display === "flex") {
+            x.style.display = "none";
+        } else {
+            x.style.display = "flex";
+            x.style.flexDirection = "column";
+        }
+    }
+</script>
 
 </body>
 </html>
