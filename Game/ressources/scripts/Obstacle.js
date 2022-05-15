@@ -27,8 +27,9 @@ export default class Obstacle{
 
 }
 
-export const abricoolGillard = new Obstacle(416,333,884,347, true, (player)=>{
-    player.drink();
+export const abricoolGillard = new Obstacle(416,333,884,347, true, (game)=>{
+    game.player.drink();
+    game.validationTask();
 });
 
 export const glacier = new Obstacle(1343,342,226,325, true, (player)=>{

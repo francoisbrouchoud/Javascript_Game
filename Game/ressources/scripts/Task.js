@@ -1,4 +1,4 @@
-import {entree} from "./Room";
+import {entree} from "./Room.js";
 
 export default class Task{
 

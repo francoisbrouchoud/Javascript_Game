@@ -40,6 +40,7 @@
     var w = canvas.width;
     var h = canvas.height;
 
+    // TODO récuperation pseudo + age de la page d'avant
     var game = new Game(new Player(18, "Steve", w, h), h, w);
 
     function draw() {
@@ -48,6 +49,7 @@
     }
 
     function updateInfo() {
+        // texte mission, taux alcoolémie
         document.querySelector("#alcoolRate").val = game.player.alcoolRate;
     }
 
@@ -69,10 +71,13 @@
     (function frame() {
         requestAnimFrame(frame)
         game.checkCollision();
-        game.checkEndGame();
+        game.checkAlcohol();
+        game.checkTime();
         draw();
         updateInfo();
     })();
+
+    //Timer +  affichage?
 
 </script>
 </html>

@@ -1,5 +1,5 @@
-// continent des fonctions tel que la détection de collisions
-// comment faire du ajax en vanilla:
+// continent des fonctions
+//TODO voir intégrer pour passage de page 1 à 2 ?? comment faire du ajax en vanilla:
 var r = new XMLHttpRequest();
 r.open("POST", "path/to/api", true);
 r.onreadystatechange = function () {

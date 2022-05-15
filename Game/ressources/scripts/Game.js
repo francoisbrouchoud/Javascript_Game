@@ -20,9 +20,16 @@ export default class Game {
         this.boardWidth = w;
     }
 
-    // voir ou mettre?
-    drawBgImg() {
+    // controler si on peut aller dans la salle à côté.
+    checkAndChangeRoom(direction, x, y,playerW, playerH) {
+
         canvas.style.backgroundImage = "url("+this.room.image+")";
+
+        if(blocker)
+            this.player.setPostion(x, y);
+        else
+            this.player.setPostion(this.boardWidth - playerW, y);
+
     }
 
     checkCollision() {
@@ -30,23 +37,19 @@ export default class Game {
 
         //Il va vers la gauche
         if (x < 0) {
-            this.drawBgImg();
-            this.player.changePage(w - playerW, y);
+            this.checkAndChangeRoom("gauche", x, y, playerW, playerH);
         }
         //Il va en haut
         if (y < 0) {
-            this.drawBgImg();
-            this.player.changePage(x, h - playerH);
+            this.checkAndChangeRoom("haut", x, y, playerW, playerH);
         }
         //Il va en bas
         if (y > this.boardHeight - playerH) {
-            this.drawBgImg();
-            this.player.changePage(x, 0);
+            this.checkAndChangeRoom("bas", x, y, playerW, playerH);
         }
         //Il va à droite
         if (x > this.boardWidth - playerW) {
-            this.drawBgImg();
-            this.player.changePage(0, y);
+            this.checkAndChangeRoom("droite", x, y, playerW, playerH);
         }
 
         for (let i; i < this.room.obsacle.length; i++) {
@@ -56,19 +59,28 @@ export default class Game {
 
             if (x - (obsX + obsW) <= 0 && y - (obsY + obsH) <= 0) {
                 console.log("touché");
-                obstacle.action();
+                obstacle.action(this);
                 //Si l'obstacle est actif, ça déclanchera l'action de l'osbstacle
             }
         }
     }
 
-    checkEndGame(){
-        //check alcohol
+    checkAlcohol(){
+    }
 
-        //check time
+    checkTime(){
     }
 
     validationTask(){
+        // check task en cours?
         // check task and change mission if need and room and day?
     }
+
+    endGame(statut){
+        // afficher l'ecran adéquat
+
+        // stocker ses informations de classement en local
+        // afficher un bouton pour passer à la page suivante?? ou autre idée
+    }
+
 }
