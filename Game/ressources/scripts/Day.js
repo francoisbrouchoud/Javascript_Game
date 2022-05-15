@@ -1,6 +1,6 @@
-import {mission1} from './Mission';
+import {mission1} from './Mission.js';
 
-export default class Day{
+export default class Day {
 
     name;
     text;

@@ -5,15 +5,19 @@ export default class Mission{
 
     title;
     task; //liste de taches
-    room; // pièces quelle a 
-
-    constructor(title, task, room) {
+    rooms; // pièces quelle a
+    startRoom;
+    constructor(title, task, rooms, startRoom) {
         this.title = title;
         this.task = task;
-        this.room = room;
+        this.startRoom= startRoom;
+        this.rooms = rooms;
     }
 }
 
 export const mission1 = new Mission("mission 1",
-[new Task(true, "Prendre photo de RhoneFM","Trouver le stand rhone fm et prendre la photo")],
-[room1, room2]);
+[new Task(true, room1,"Trouver le stand rhone fm et prendre la photo")],
+[[null, room2],
+        [room1, room2]
+        [room1, null]],
+    room1);

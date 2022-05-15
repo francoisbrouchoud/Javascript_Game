@@ -1,3 +1,4 @@
+
 export default class Player {
 
     name;
@@ -17,8 +18,8 @@ export default class Player {
      persoMvPath = "ressources/images/Steve/SteveDepl0.png";
      persoHatPath = "ressources/images/Steve/SteveChapeau.png";
      persoHatMvPath = "ressources/images/Steve/SteveDepl0ch.png";
-     imageWidth=50;
-     imageHeight=62;
+     imageWidth=37;
+     imageHeight=47;
      pasPerso = 5;
 
     constructor(name, age, w, h) {
@@ -51,7 +52,7 @@ export default class Player {
     stopMove(){
         this.isMoving=false;
     }
-    changePage(x,y){
+    setPostion(x,y){
         this.posX = x;
         this.posY = y;
     }
