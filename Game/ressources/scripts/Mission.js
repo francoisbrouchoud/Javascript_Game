@@ -14,10 +14,17 @@ export default class Mission{
         this.rooms = rooms;
     }
 }
+/*
+export const mission1 = new Mission("Mission entrée",
+    [])
+/*
 
+/*
 export const mission1 = new Mission("mission 1",
 [new Task(true, room1,"Trouver le stand rhone fm et prendre la photo")],
 [[null, room2],
         [room1, room2]
         [room1, null]],
     room1);
+
+ */

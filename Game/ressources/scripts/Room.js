@@ -6,7 +6,7 @@ import Obstacle, {
     bubbleTea, busPorteArriere, busPorteAvant, entreeComptoir, espaceGourmand,
     fondue, friendGreen, friendPurple, gillard,
     glacier, gpCornut,
-    marrons, nourriture, nouvelliste, potDeChambre, rhoneFm, swisscom,
+    marrons, nourriture, nouvelliste, potDeChambre, rhoneFm, swisscom, zonePersonnalites,
 } from './Obstacle.js';
 
 export default class Room{
@@ -44,9 +44,9 @@ export const abricoolRoom = new Room("Abricool", "abricool.jpg", [abricool, glac
 
 export const gillardRoom = new Room("Gillard", "gillard.jpg", [gillard, glacier, marrons, bubbleTea, fondue]);
 
-export const afterRoom = new Room("After", "after.jpg", [after]);
+export const afterRoom = new Room("After", "after.jpg", [after, friendGreen]);
 
-export const espaceGourmandRoom = new Room("Espace Gourmand", "espacegourmand.jpg", [espaceGourmand, friendGreen]);
+export const espaceGourmandRoom = new Room("Espace Gourmand", "espacegourmand.jpg", [espaceGourmand, zonePersonnalites]);
 
 export const entreeRoom = new Room("Entrée", "entree.jpg", [bancomat, entreeComptoir, billeterie]);
 

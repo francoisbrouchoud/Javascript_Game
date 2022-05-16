@@ -118,3 +118,7 @@ export const friendPurple = new Obstacle(1435, 750, 101, 120, true, (player)=>{
 export const friendGreen = new Obstacle(1029, 1211, 137, 169, true, (player)=>{
     player.drink();
 });
+
+export const zonePersonnalites = new Obstacle(1317, 645, 399, 361, true, (player)=>{
+    player.drink();
+});
