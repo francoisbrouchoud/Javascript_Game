@@ -1,4 +1,4 @@
-import {day1} from './Day.js';
+import {day1, day2} from './Day.js';
 
 export default class Game {
 
@@ -10,25 +10,74 @@ export default class Game {
 
     boardWidth;
     boardHeight
+    canvas
 
-    constructor(player, h, w) {
+    constructor(player, h, w, canvas) {
         this.player = player;
-        this.day = day1;
-        this.mission = day1.mission[0];
+        this.day = day2;
+        this.mission = day2.mission[1];
         this.room = this.mission.startRoom;
         this.boardHeight = h;
         this.boardWidth = w;
+        this.canvas = canvas;
     }
 
     // controler si on peut aller dans la salle à côté.
     checkAndChangeRoom(direction, x, y,playerW, playerH) {
+        var test = this.mission.rooms;
 
-        canvas.style.backgroundImage = "url("+this.room.image+")";
 
-        if(blocker)
+
+        for (let i = 0; i < test.length; i++) {
+            for (let j = 0; j < test[i].length; j++) {
+                console.log( test[i][j]);
+            }
+        }
+        this.canvas.style.backgroundImage = "url("+this.room.image+")";
+
+
+
+        /*if(blocker){
             this.player.setPostion(x, y);
-        else
+            console.log("blocker oui");
+        }
+
+        else{
             this.player.setPostion(this.boardWidth - playerW, y);
+            console.log("blocker non");
+        }*/
+
+
+
+
+
+        switch (direction){
+            case "gauche":
+                console.log(x)
+                if(i-1 >= 0 && test[i-1][j]){
+                    console.log("je vais à gauche");
+                }
+                break;
+
+            case "droite":
+                if(i+1 < test[y].length && test[i][j+1] != null){
+                    console.log("je vais à droite");
+                }
+                break;
+
+            case "bas":
+                if(j+1 < test.length && test[i+1][j] != null){
+                    console.log("je vais en bas");
+                }
+                break;
+
+            case "haut":
+                if(j-1 > test.length && test[i-1][j] != null){
+                    console.log("je vais en haut");
+                }
+                break;
+
+        }
 
     }
 
