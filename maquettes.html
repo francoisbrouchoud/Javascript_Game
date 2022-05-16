@@ -16,7 +16,7 @@
                 <a href="javascript:void(0);" onclick="displayMenu()"><img src="ressources/images/hamburger_icon.svg" alt="Menu for mobile" ></a>
             </li>
             <!-- Different display depending on the screen and the hamburger button -->
-            <div id="menu-links">
+            <div id="menu-links" class="menu-links" >
                 <li>
                     <a href="description.html">Description</a>
                 </li>
@@ -65,11 +65,10 @@
 <script>
     function displayMenu() {
         var x = document.getElementById("menu-links");
-        if (x.style.display === "flex") {
-            x.style.display = "none";
+        if (x.className === "menu-links") {
+            x.className += " responsive";
         } else {
-            x.style.display = "flex";
-            x.style.flexDirection = "column";
+            x.className = "menu-links";
         }
     }
 </script>
