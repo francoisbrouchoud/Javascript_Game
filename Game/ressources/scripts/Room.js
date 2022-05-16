@@ -1,10 +1,10 @@
 import Obstacle, {
-    abricool,
+    abricool, after,
     afterGourmand, arret,
     bancomat,
     billeterie,
-    bubbleTea, busPorteArriere, busPorteAvant, entreeComptoir,
-    fondue, gillard,
+    bubbleTea, busPorteArriere, busPorteAvant, entreeComptoir, espaceGourmand,
+    fondue, friendGreen, friendPurple, gillard,
     glacier, gpCornut,
     marrons, nourriture, nouvelliste, potDeChambre, rhoneFm, swisscom,
 } from './Obstacle.js';
@@ -44,9 +44,9 @@ export const abricoolRoom = new Room("Abricool", "abricool.jpg", [abricool, glac
 
 export const gillardRoom = new Room("Gillard", "gillard.jpg", [gillard, glacier, marrons, bubbleTea, fondue]);
 
-export const afterRoom = new Room("After", "after.jpg", [afterGourmand]);
+export const afterRoom = new Room("After", "after.jpg", [after]);
 
-export const espaceGourmandRoom = new Room("Espace Gourmand", "espacegourmand.jpg", [afterGourmand]);
+export const espaceGourmandRoom = new Room("Espace Gourmand", "espacegourmand.jpg", [espaceGourmand, friendGreen]);
 
 export const entreeRoom = new Room("Entrée", "entree.jpg", [bancomat, entreeComptoir, billeterie]);
 
@@ -61,6 +61,12 @@ export const lunabusRoom = new Room("Lunabus", "lunabus.jpg", [arret, busPorteAr
 export const nouvellisteRoom = new Room("Nouvelliste", "nouvelliste.jpg", [nouvelliste]);
 
 export const rhoneFmRoom = new Room("Rhône FM", "rhonefm.jpg", [rhoneFm]);
+
+export const aleatoire1Room = new Room("Aleatoire1", "aleatoire1.jpg", [friendPurple]);
+
+export const aleatoire2Room = new Room("Aleatoire2", "aleatoire2.jpg", [friendPurple]);
+
+export const aleatoire3Room = new Room("Aleatoire3", "aleatoire3.jpg", [friendPurple]);
 
 
 

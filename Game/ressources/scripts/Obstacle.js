@@ -53,9 +53,14 @@ export const fondue = new Obstacle(826,1019,884,347, true, (player)=>{
     player.drink();
 });
 
-export const afterGourmand = new Obstacle(303,0,1541,595, true, (player)=>{
+export const after = new Obstacle(303,0,1541,595, true, (player)=>{
     player.drink();
 });
+
+export const espaceGourmand = new Obstacle(303,0,1541,595, true, (player)=>{
+    player.drink();
+});
+
 
 export const bancomat = new Obstacle(134,0,226,325, true, (player)=>{
     player.drink();
@@ -103,5 +108,13 @@ export const nouvelliste = new Obstacle(661,317,920,354, true, (player)=>{
 });
 
 export const rhoneFm = new Obstacle(661,317,920,354, true, (player)=>{
+    player.drink();
+});
+
+export const friendPurple = new Obstacle(1435, 750, 101, 120, true, (player)=>{
+    player.drink();
+});
+
+export const friendGreen = new Obstacle(1029, 1211, 137, 169, true, (player)=>{
     player.drink();
 });
