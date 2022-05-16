@@ -24,7 +24,7 @@ import {
     room1,
     room2, swisscomRoom
 } from './Room.js';
-import {abricool} from "./Obstacle";
+
 
 export default class Mission{
 
@@ -48,12 +48,11 @@ export const missionEspaceGourmand = new Mission("Mission espace Gourmand", [deg
 export const missionAfter = new Mission("Mission After", [trouverAmiAfter, entrerAfter], [[aleatoire3Room, gpCornutRoom, null],[null, gillardRoom, afterRoom]], aleatoire3Room);
 
 
-/*
-export const mission1 = new Mission("mission 1",
+
+/*export const mission1 = new Mission("mission 1",
 [new Task(true, room1,"Trouver le stand rhone fm et prendre la photo")],
 [[null, room2],
         [room1, room2]
         [room1, null]],
-    room1);
+    room1);*/
 
- */

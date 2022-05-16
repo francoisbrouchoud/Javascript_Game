@@ -1,5 +1,4 @@
 import {
-    mission1,
     missionAfter,
     missionCerm1,
     missionCerm2,
@@ -24,6 +23,7 @@ export default class Day {
         this.mission = mission;
     }
 }
+
 
 export const day1 = new Day(1, "lundi", "text", 140, [missionEntree, missionCerm1, missionCerm2, missionAfter]);
 export const day2 = new Day(2, "mardi", "text", 120, [missionEntree, missionExterieure, missionEspaceGourmand, missionAfter]);

@@ -1,14 +1,13 @@
 import {
-    abricoolRoom,
-    aleatoire1Room,
-    entree,
+    abricoolRoom, afterRoom,
+    aleatoire1Room, aleatoire2Room, aleatoire3Room,
     entreeRoom, espaceGourmandRoom, gillardRoom, gpCornutRoom,
     nouvellisteRoom,
     potChambreRoom,
     rhoneFmRoom,
     swisscomRoom
 } from "./Room.js";
-import {abricool, espaceGourmand, gpCornut, nouvelliste} from "./Obstacle";
+
 
 export default class Task{
 
@@ -35,7 +34,6 @@ export const trouverAmiComptoir = new Task(true, aleatoire1Room, "Trouve ton ami
 export const trouverAmiComptoir2 = new Task(true, aleatoire2Room, "Trouve ton ami.");
 export const trouverAmiComptoir3 = new Task(true, aleatoire3Room, "Trouve ton ami.");
 
-export const trouverAmiAfter = new Task(true, afterRoom,  "Trouve ton ami.");
 //export const acheterAboire = new Task(true, afterRoom,  "Trouve ton ami.");
 
 export const photoRhoneFm = new Task(true, rhoneFmRoom,  "Fais toi prendre en photo au stand Rhône FM.");

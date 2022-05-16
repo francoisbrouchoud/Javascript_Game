@@ -1,6 +1,6 @@
 import Obstacle, {
     abricool, after,
-    afterGourmand, arret,
+    arret,
     bancomat,
     billeterie,
     bubbleTea, busPorteArriere, busPorteAvant, entreeComptoir, espaceGourmand,
