@@ -44,9 +44,9 @@ export const achatPot = new Task(true, potChambreRoom,  "Achète un pot de chamb
 
 
 export const roueSwisscom = new Task(true, swisscomRoom,  "Tourne la roue au stand de Swisscom.");
-export const porteDeNovembre = new Task(true, gillardRoom,  "Savoure un verre de porte de Novembre.");
+export const boirePorteDeNovembre = new Task(true, gillardRoom,  "Savoure un verre de porte de Novembre.");
 export const mangerFoodtruck = new Task(true, gpCornutRoom,  "Il est temps de manger.");
-export const sucreGpCornut = new Task(true, gpCornutRoom,  "Désinfecte toi la bouche avec un sucre du grand-père Cornut");
+export const boireSucreGpCornut = new Task(true, gpCornutRoom,  "Désinfecte toi la bouche avec un sucre du grand-père Cornut");
 
 export const degusterAbricool = new Task(true, abricoolRoom,  "Déguste un abricool.");
 export const saluerPersonnalite = new Task(true, espaceGourmandRoom,  "Salue des personnalités");
