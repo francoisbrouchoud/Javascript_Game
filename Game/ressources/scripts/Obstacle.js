@@ -27,7 +27,12 @@ export default class Obstacle{
 
 }
 
-export const abricoolGillard = new Obstacle(416,333,884,347, true, (game)=>{
+export const abricool = new Obstacle(416,333,884,347, true, (game)=>{
+    game.player.drink();
+    game.validationTask();
+});
+
+export const gillard = new Obstacle(416,333,884,347, true, (game)=>{
     game.player.drink();
     game.validationTask();
 });
@@ -64,9 +69,18 @@ export const billeterie = new Obstacle(1064,929,920,354, true, (player)=>{
     player.drink();
 });
 
-export const swisscomGpcornutPot = new Obstacle(346,853,920,354, true, (player)=>{
+export const swisscom = new Obstacle(346,853,920,354, true, (player)=>{
     player.drink();
 });
+
+export const gpCornut = new Obstacle(346,853,920,354, true, (player)=>{
+    player.drink();
+});
+
+export const potDeChambre = new Obstacle(346,853,920,354, true, (player)=>{
+    player.drink();
+});
+
 
 export const nourriture = new Obstacle(946,284,920,354, true, (player)=>{
     player.drink();
@@ -84,6 +98,10 @@ export const busPorteAvant = new Obstacle(1193,889,91,257, true, (player)=>{
     player.drink();
 });
 
-export const nouvellisteRhonefm = new Obstacle(661,317,920,354, true, (player)=>{
+export const nouvelliste = new Obstacle(661,317,920,354, true, (player)=>{
+    player.drink();
+});
+
+export const rhoneFm = new Obstacle(661,317,920,354, true, (player)=>{
     player.drink();
 });
