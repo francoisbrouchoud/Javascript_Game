@@ -1,12 +1,12 @@
 import Obstacle, {
-    abricoolGillard,
+    abricool,
     afterGourmand, arret,
     bancomat,
     billeterie,
     bubbleTea, busPorteArriere, busPorteAvant, entreeComptoir,
-    fondue,
-    glacier,
-    marrons, nourriture, nouvellisteRhonefm, swisscomGpcornutPot
+    fondue, gillard,
+    glacier, gpCornut,
+    marrons, nourriture, nouvelliste, potDeChambre, rhoneFm, swisscom,
 } from './Obstacle.js';
 
 export default class Room{
@@ -40,27 +40,27 @@ export const room2 = new Room("room2","rhonefm.jpg",
     })
 ]);
 
-export const abricool = new Room("Abricool", "abricool.jpg", [abricoolGillard, glacier, marrons, bubbleTea, fondue]);
+export const abricoolRoom = new Room("Abricool", "abricool.jpg", [abricool, glacier, marrons, bubbleTea, fondue]);
 
-export const gillard = new Room("Gillard", "gillard.jpg", [abricoolGillard, glacier, marrons, bubbleTea, fondue]);
+export const gillardRoom = new Room("Gillard", "gillard.jpg", [gillard, glacier, marrons, bubbleTea, fondue]);
 
-export const after = new Room("After", "after.jpg", [afterGourmand]);
+export const afterRoom = new Room("After", "after.jpg", [afterGourmand]);
 
-export const espaceGourmand = new Room("Espace Gourmand", "espacegourmand.jpg", [afterGourmand]);
+export const espaceGourmandRoom = new Room("Espace Gourmand", "espacegourmand.jpg", [afterGourmand]);
 
-export const entree = new Room("Entrée", "entree.jpg", [bancomat, entreeComptoir, billeterie]);
+export const entreeRoom = new Room("Entrée", "entree.jpg", [bancomat, entreeComptoir, billeterie]);
 
-export const swisscom = new Room("Swisscom", "swisscom.jpg", [swisscomGpcornutPot, nourriture]);
+export const swisscomRoom = new Room("Swisscom", "swisscom.jpg", [swisscom, nourriture]);
 
-export const gpCornut = new Room("Grand-père Conrnut", "gpcornut.jpg", [swisscomGpcornutPot, nourriture]);
+export const gpCornutRoom = new Room("Grand-père Conrnut", "gpcornut.jpg", [gpCornut, nourriture]);
 
-export const potChambre = new Room("Pot de chambre", "potdechambre.jpg", [swisscomGpcornutPot, nourriture]);
+export const potChambreRoom = new Room("Pot de chambre", "potdechambre.jpg", [potDeChambre, nourriture]);
 
-export const lunabus = new Room("Lunabus", "lunabus.jpg", [arret, busPorteArriere, busPorteAvant]);
+export const lunabusRoom = new Room("Lunabus", "lunabus.jpg", [arret, busPorteArriere, busPorteAvant]);
 
-export const nouvelliste = new Room("Nouvelliste", "nouvelliste.jpg", [nouvellisteRhonefm]);
+export const nouvellisteRoom = new Room("Nouvelliste", "nouvelliste.jpg", [nouvelliste]);
 
-export const rhoneFm = new Room("Rhône FM", "rhonefm.jpg", [nouvellisteRhonefm]);
+export const rhoneFmRoom = new Room("Rhône FM", "rhonefm.jpg", [rhoneFm]);
 
 
 
