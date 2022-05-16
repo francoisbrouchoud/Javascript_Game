@@ -21,8 +21,7 @@ import {
     nouvellisteRoom,
     potChambreRoom,
     rhoneFmRoom,
-    room1,
-    room2, swisscomRoom
+    swisscomRoom
 } from './Room.js';
 
 
