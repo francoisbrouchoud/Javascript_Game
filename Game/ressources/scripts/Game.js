@@ -1,5 +1,6 @@
 import {day1, day2} from './Day.js';
 
+
 export default class Game {
 
     day;
@@ -9,8 +10,11 @@ export default class Game {
     player;
 
     boardWidth;
-    boardHeight
-    canvas
+    boardHeight;
+    canvas;
+    
+    i;
+    j;
 
     constructor(player, h, w, canvas) {
         this.player = player;
@@ -20,65 +24,69 @@ export default class Game {
         this.boardHeight = h;
         this.boardWidth = w;
         this.canvas = canvas;
+        this.canvas.style.backgroundImage = "url("+this.room.image+")";
+        this.i = this.mission.startI;
+        this.j = this.mission.startJ;
     }
 
-    // controler si on peut aller dans la salle à côté.
+    // Contrôler si on peut aller dans la salle à côté.
     checkAndChangeRoom(direction, x, y,playerW, playerH) {
+
+        //Just for test
+        console.log("current room: " + this.room.name);
         var test = this.mission.rooms;
-
-
-
-        for (let i = 0; i < test.length; i++) {
-            for (let j = 0; j < test[i].length; j++) {
-                console.log( test[i][j]);
-            }
-        }
-        this.canvas.style.backgroundImage = "url("+this.room.image+")";
-
-
-
-        /*if(blocker){
-            this.player.setPostion(x, y);
-            console.log("blocker oui");
-        }
-
-        else{
-            this.player.setPostion(this.boardWidth - playerW, y);
-            console.log("blocker non");
-        }*/
-
-
-
-
+        console.log(test.length)
+        //Just for test
+        console.log("haut : " + this.i + " " + this.j);
 
         switch (direction){
             case "gauche":
-                console.log(x)
-                if(i-1 >= 0 && test[i-1][j]){
-                    console.log("je vais à gauche");
+                if(this.j-1 >= 0 && test[this.i][this.j-1] != null){
+                    this.j -=1;
+                    this.player.setPostion(this.boardWidth-playerW,y);
+                }else{
+                    console.log("impossible d'aller à gauche");//Just for test
+                    this.player.setPostion(0,y);
                 }
                 break;
 
             case "droite":
-                if(i+1 < test[y].length && test[i][j+1] != null){
-                    console.log("je vais à droite");
+                if(this.j+1 <= test.length && test[this.i][this.j+1] != null){
+                    this.j += 1;
+                    this.player.setPostion(0,y);
+
+                }else{
+                    console.log("impossible à droite");//Just for test
+                    this.player.setPostion(this.boardWidth - playerW,y);
                 }
                 break;
 
             case "bas":
-                if(j+1 < test.length && test[i+1][j] != null){
-                    console.log("je vais en bas");
+                if(this.i+1 <= test.length && test[this.i+1][this.j] != null){
+                    this.i += 1;
+                    this.player.setPostion(x,0);
+                }else{
+                    console.log("impossible d'aller en bas");//Just for test
+                    this.player.setPostion(x,0);
                 }
                 break;
 
             case "haut":
-                if(j-1 > test.length && test[i-1][j] != null){
-                    console.log("je vais en haut");
+                if(this.i-1 >= 0 && test[this.i-1][this.j] != null){
+                    this.i -= 1;
+                    this.player.setPostion(x, this.boardHeight-playerH);
+                }else{
+                    console.log("impossible d'aller en haut");//Just for test
+                    this.player.setPostion(x,0);
                 }
                 break;
 
         }
+        this.room = test[this.i][this.j];
+        this.canvas.style.backgroundImage = "url("+this.room.image+")";
 
+        //Just for test
+        console.log("bas : " + this.i + " " + this.j);
     }
 
     checkCollision() {
