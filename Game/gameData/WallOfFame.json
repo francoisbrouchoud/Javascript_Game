@@ -1,4 +1,4 @@
-[{"pseudo":"Luca","Day":3, "Mission":2},
-    {"pseudo":"Julienne","Day":2, "Mission":4},
-    {"pseudo":"François","Day":4, "Mission":1},
-    {"pseudo":"Céline","Day":2, "Mission":2}]
+[{"pseudo":"Luca","day":3, "mission":2,"task": 3,"timer": 20},
+    {"pseudo":"Julienne","day":4, "mission":4,"task": 3,"timer": 20},
+    {"pseudo":"François","day":4, "mission":1,"task": 3,"timer": 20},
+    {"pseudo":"Céline","day":2, "mission":2,"task": 3,"timer": 20}]

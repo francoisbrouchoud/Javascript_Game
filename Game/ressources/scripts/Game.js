@@ -1,18 +1,20 @@
-import {day1, day2} from './Day.js';
-
+import {day1, day2, day3} from './Day.js';
 
 export default class Game {
 
     day;
     mission;
     room;
-    missionDone;
+    missionDone=0;
+    nbTaskDone=0;
+    timer=10;
     player;
+    gameFinish;
 
     boardWidth;
     boardHeight;
     canvas;
-    
+
     i;
     j;
 
@@ -90,6 +92,8 @@ export default class Game {
     }
 
     checkCollision() {
+        if(this.gameFinish)
+            return;
         let {x, y, playerW, playerH} = this.player.getPosition();
 
         //Il va vers la gauche
@@ -134,10 +138,44 @@ export default class Game {
     }
 
     endGame(statut){
+        this.gameFinish = true;
         // afficher l'ecran adéquat
+        let image = "ressources/images/EcransFin/";
+        switch (statut) {
+            case "win":
+                image +="win.jpg";
+                break;
+            case "drunk":
+                image +="drunk.jpg"
+                break;
+            case "sleep":
+                image +="sleep.jpg"
+                break;
+            default:
+            case "missBus":
+                image +="missBus.jpg"
+                break;
+        }
+        this.canvas.style.backgroundImage = "url("+image+")";
 
         // stocker ses informations de classement en local
+        let user={
+            "pseudo":this.player.name,
+            "day":this.day.id,
+            "mission":this.missionDone,
+            "task":this.nbTaskDone,
+            "timer":this.timer
+        }
+        let wallOfFame = JSON.parse(localStorage.getItem('wallOfFame'));
+        if(wallOfFame === undefined || wallOfFame ===null)
+            wallOfFame = [];
+        wallOfFame.push(user);
+        localStorage.setItem('wallOfFame', JSON.stringify(wallOfFame));
+        localStorage.setItem('currentResult',JSON.stringify(user));
         // afficher un bouton pour passer à la page suivante?? ou autre idée
+        this.canvas.addEventListener("click",()=>{
+            location.href= "FinishPage.html";
+        })
     }
 
 }
