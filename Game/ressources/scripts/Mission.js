@@ -28,13 +28,13 @@ import {
 export default class Mission{
 
     title;
-    task; //liste de taches
+    tasks; //liste de taches
     rooms; // pièces quelle a
     startRoom;
 
-    constructor(title, task, rooms, startI, startJ) {
+    constructor(title, tasks, rooms, startI, startJ) {
         this.title = title;
-        this.task = task;
+        this.tasks = tasks;
         this.startRoom = rooms[startI][startJ];
         this.rooms = rooms;
         this._startI = startI;
@@ -52,7 +52,7 @@ export default class Mission{
 
 }
 
-export const missionEntree = new Mission("Mission entrée", [retirerArgent, achatBilletEntree, passerSecurite], [entreeRoom], 0,0);
+export const missionEntree = new Mission("Mission entrée", [retirerArgent, achatBilletEntree, passerSecurite], [[entreeRoom]], 0,0);
 
 export const missionCerm1 = new Mission("Mission CERM 1", [trouverAmiComptoir, photoRhoneFm, chapeauNouvelliste, achatPot],
     [[null,nouvellisteRoom,null],

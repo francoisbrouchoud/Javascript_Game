@@ -1,13 +1,15 @@
-import {day1, day2, day3} from './Day.js';
+import {days} from './Day.js';
 
 export default class Game {
 
     day;
     mission;
+    tasks;
     room;
+
     missionDone=0;
     nbTaskDone=0;
-    timer=10;
+    timer;
     player;
     gameFinish;
 
@@ -20,15 +22,29 @@ export default class Game {
 
     constructor(player, h, w, canvas) {
         this.player = player;
-        this.day = day2;
-        this.mission = day2.mission[1];
-        this.room = this.mission.startRoom;
+        this.day = days[0];
+        this.timer = this.day.timer;
         this.boardHeight = h;
         this.boardWidth = w;
         this.canvas = canvas;
-        this.canvas.style.backgroundImage = "url("+this.room.image+")";
+        this.setNextMission()
+    }
+    setNextMission(){
+        if(this.day.mission.length <= this.missionDone){
+            if(this.day.id >= days.length){
+                return this.endGame("win");
+            }
+            this.day = days[this.day.id];
+            this.missionDone=0;
+            this.timer = this.day.timer;
+        }
+        this.nbTaskDone=0;
+        this.mission = this.day.mission[this.missionDone]
+        this.tasks = this.mission.tasks;
         this.i = this.mission.startI;
         this.j = this.mission.startJ;
+        this.room = this.mission.rooms[this.i][this.j];
+        this.canvas.style.backgroundImage = "url("+this.room.image+")";
     }
 
     // Contrôler si on peut aller dans la salle à côté.
@@ -99,13 +115,16 @@ export default class Game {
             this.checkAndChangeRoom("droite", x, y, playerW, playerH);
         }
 
-        for (let i; i < this.room.obsacle.length; i++) {
+        for (let i=0; i < this.room.obsacle.length; i++) {
             let obstacle = this.room.obsacle[i];
             let {obsX, obsY, obsW, obsH} = obstacle.getPosition();
+            // TODO c'est quoi?
             let status = obstacle.getStatus();
 
+            // TODO Problème
+            //  je me trouve à la possion x=o et y=o et l'obstacle se trouve en x =10 y=10 w=10 h=10
+            // 0-(10+10) < 0 et 0-(10+10)<0
             if (x - (obsX + obsW) <= 0 && y - (obsY + obsH) <= 0) {
-                console.log("touché");
                 obstacle.action(this);
                 //Si l'obstacle est actif, ça déclanchera l'action de l'osbstacle
             }
@@ -118,9 +137,19 @@ export default class Game {
     checkTime(){
     }
 
-    validationTask(){
-        // check task en cours?
-        // check task and change mission if need and room and day?
+    validationTask(taskId){
+        for (let id in this.tasks){
+            let task = this.tasks[id];
+
+            if(task.id === taskId && !task.done){
+                task.done=true;
+                this.nbTaskDone++;
+            }
+        }
+        if(this.tasks.length <= this.nbTaskDone){
+            this.missionDone++;
+            this.setNextMission();
+        }
     }
 
     endGame(statut){

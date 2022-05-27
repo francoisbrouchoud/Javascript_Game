@@ -32,3 +32,4 @@ export const day4 = new Day(4, "jeudi", "text", 160, [missionEntree, missionCerm
 export const day5 = new Day(5, "vendredi", "text", 140, [missionEntree, missionCerm1, missionCerm2, missionExterieure, missionAfter]);
 export const day6 = new Day(6, "samedi", "text", 120,[missionEntree, missionCerm2, missionEspaceGourmand, missionExterieure, missionAfter]);
 export const day7 = new Day(7, "dimanche", "text", 100, [missionEntree, missionCerm1, missionExterieure, missionCerm2, missionEspaceGourmand, missionAfter]);
+export const days =[day1, day2, day3, day4, day5, day6, day7]

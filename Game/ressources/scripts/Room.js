@@ -42,7 +42,7 @@ export const room2 = new Room("room2","rhonefm.jpg",
 
 export const abricoolRoom = new Room("Abricool", "abricool.jpg", [abricool, glacier, marrons, bubbleTea, fondue]);
 
-export const gillardRoom = new Room("Gillard", "gillard.jpg", [gillard, glacier, marrons, bubbleTea, fondue]);
+export const gillardRoom = new Room("Gillard", "gilliard.jpg", [gillard, glacier, marrons, bubbleTea, fondue]);
 
 export const afterRoom = new Room("After", "after.jpg", [after, friendGreen]);
 

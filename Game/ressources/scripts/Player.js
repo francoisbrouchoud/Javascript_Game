@@ -65,6 +65,9 @@ export default class Player {
     }
     // dormir
     // manger
+    eat(){
+
+    }
     // dessiner le personnage
     draw(context){
 
