@@ -19,7 +19,7 @@
         <p class="caption">Timer</p>
         <p>3 min 45 sec </p>
         <div class="conversation">
-            <p>Salut ! voicn bkjfdnjgikg fujsdinnkjfdln dfjs jdsfs ujfdipjds fiujdspjafupidsan lfdsujipn</p>
+            <p>Salut <span id="pseudoDisplay"></span> ! Voici ta mission !</p>
         </div>
     </div>
     <div id="mission">
@@ -33,6 +33,10 @@
 <script type="module">
     import Player from './ressources/scripts/Player.js';
     import Game from "./ressources/scripts/Game.js";
+    const player = JSON.parse(localStorage.getItem("currentPlayer"));
+    const pseudo = player.pseudo;
+    document.getElementById("pseudoDisplay").innerHTML = pseudo;
+    const age = player.age;
 
     //Récupération du canvas et du contexte
     var canvas = document.getElementById("caneva_game");
@@ -41,7 +45,8 @@
     var h = canvas.height;
 
     // TODO récuperation pseudo + age de la page d'avant
-    var game = new Game(new Player("Steve",22, w, h), h, w, canvas);
+    var game = new Game(new Player(pseudo, age, w, h), h, w, canvas);
+
 
     function draw() {
         context.clearRect(0, 0, w, h);
