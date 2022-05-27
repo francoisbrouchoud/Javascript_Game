@@ -17,7 +17,7 @@
     <div id="state">
         <p class="caption">Taux d'alcoolémie</p> <input id="alcoolRate" type="range" min="0" max="100" value="60"/>
         <p class="caption">Timer</p>
-        <p>3 min 45 sec </p>
+        <p id="timer">05:00</p>
         <div class="conversation">
             <p>Salut <span id="pseudoDisplay"></span> ! Voici ta mission !</p>
         </div>
@@ -82,7 +82,27 @@
         updateInfo();
     })();
 
-    //Timer +  affichage?
+    // Set timer
+    const startMinutes = 5;
+    let time = startMinutes * 60;
 
+    const timerElement = document.getElementById("timer");
+
+    setInterval(() => {
+        let minutes = parseInt(time / 60, 10);
+        let seconds = parseInt(time % 60, 10);
+
+        minutes = minutes < 10 ? "0" + minutes : minutes;
+        seconds = seconds < 10 ? "0" + seconds : seconds;
+
+        timerElement.innerText = `${minutes}:${seconds}`;
+
+        if(time <= 0) {
+            time = 0;
+            game.endGame("missBus");
+        } else {
+            time = time - 1;
+        }
+    }, 1000)
 </script>
 </html>
