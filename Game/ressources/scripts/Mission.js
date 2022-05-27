@@ -46,17 +46,10 @@ export default class Mission{
         return this._startI;
     }
 
-    set startI(value) {
-        this._startI = value;
-    }
-
     get startJ() {
         return this._startJ;
     }
 
-    set startJ(value) {
-        this._startJ = value;
-    }
 }
 
 export const missionEntree = new Mission("Mission entrée", [retirerArgent, achatBilletEntree, passerSecurite], [entreeRoom], 0,0);

@@ -34,61 +34,47 @@ export default class Game {
     // Contrôler si on peut aller dans la salle à côté.
     checkAndChangeRoom(direction, x, y,playerW, playerH) {
 
-        //Just for test
-        console.log("current room: " + this.room.name);
-        var test = this.mission.rooms;
-        console.log(test.length)
-        //Just for test
-        console.log("haut : " + this.i + " " + this.j);
+        var roomsArray = this.mission.rooms;
 
         switch (direction){
             case "gauche":
-                if(this.j-1 >= 0 && test[this.i][this.j-1] != null){
+                if(this.j-1 >= 0 && roomsArray[this.i][this.j-1] != null){
                     this.j -=1;
                     this.player.setPostion(this.boardWidth-playerW,y);
                 }else{
-                    console.log("impossible d'aller à gauche");//Just for test
                     this.player.setPostion(0,y);
                 }
                 break;
 
             case "droite":
-                if(this.j+1 <= test.length && test[this.i][this.j+1] != null){
+                if(this.j+1 <= roomsArray.length && roomsArray[this.i][this.j+1] != null){
                     this.j += 1;
                     this.player.setPostion(0,y);
-
                 }else{
-                    console.log("impossible à droite");//Just for test
                     this.player.setPostion(this.boardWidth - playerW,y);
                 }
                 break;
 
             case "bas":
-                if(this.i+1 <= test.length && test[this.i+1][this.j] != null){
+                if(this.i+1 <= roomsArray.length && roomsArray[this.i+1][this.j] != null){
                     this.i += 1;
                     this.player.setPostion(x,0);
                 }else{
-                    console.log("impossible d'aller en bas");//Just for test
                     this.player.setPostion(x,0);
                 }
                 break;
 
             case "haut":
-                if(this.i-1 >= 0 && test[this.i-1][this.j] != null){
+                if(this.i-1 >= 0 && roomsArray[this.i-1][this.j] != null){
                     this.i -= 1;
                     this.player.setPostion(x, this.boardHeight-playerH);
                 }else{
-                    console.log("impossible d'aller en haut");//Just for test
                     this.player.setPostion(x,0);
                 }
                 break;
-
         }
-        this.room = test[this.i][this.j];
+        this.room = roomsArray[this.i][this.j];
         this.canvas.style.backgroundImage = "url("+this.room.image+")";
-
-        //Just for test
-        console.log("bas : " + this.i + " " + this.j);
     }
 
     checkCollision() {
