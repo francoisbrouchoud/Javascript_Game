@@ -158,7 +158,7 @@ footer img{
 }
 
 table {
-    width:100%;
+    width: 100%;
     border-width: 2px;
     border-color: #E36634;
     border-collapse: collapse;
@@ -243,6 +243,26 @@ table tr a:hover  {
     nav ul li.hamburger a img:hover{
         transform: rotate(90deg);
     }
+
+    /*Reformatage du tableau */
+    table,
+    tbody,
+    tr,
+    td {
+        display: block;
+        width: auto!important;
+    }
+    td:first-child{
+        color:white;
+        background-color: #E36634;
+    }
+    td:first-child a{
+        color: white;
+    }
+    th{
+        display: none;
+    }
+
 }
 /* Display menu in column --> if clicked on hamburger button (JS) */
 @media screen and (max-width: 580px) {
