@@ -23,7 +23,7 @@ export default class Game {
     constructor(player, h, w, canvas) {
         this.player = player;
         this.day = days[0];
-        this.timer = this.day.timer;
+        this.timer = this.day.time;
         this.boardHeight = h;
         this.boardWidth = w;
         this.canvas = canvas;
@@ -45,6 +45,10 @@ export default class Game {
         this.j = this.mission.startJ;
         this.room = this.mission.rooms[this.i][this.j];
         this.canvas.style.backgroundImage = "url("+this.room.image+")";
+    }
+
+    setTimer(time) {
+        this.timer = time;
     }
 
     // Contrôler si on peut aller dans la salle à côté.
@@ -168,7 +172,7 @@ export default class Game {
                 break;
             default:
             case "missBus":
-                image +="missBus.jpg"
+                image +="win.jpg"
                 break;
         }
         this.canvas.style.backgroundImage = "url("+image+")";
