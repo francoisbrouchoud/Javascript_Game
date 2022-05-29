@@ -163,16 +163,20 @@ export default class Game {
         switch (statut) {
             case "win":
                 image +="win.jpg";
+                this.playVideoLunabus();
                 break;
             case "drunk":
                 image +="drunk.jpg"
+                this.playVideoLunabus();
                 break;
             case "sleep":
                 image +="sleep.jpg"
+                this.playVideoLunabus();
                 break;
             default:
             case "missBus":
                 image +="win.jpg"
+                this.playVideoLunabus();
                 break;
         }
         this.canvas.style.backgroundImage = "url("+image+")";
@@ -195,6 +199,12 @@ export default class Game {
         this.canvas.addEventListener("click",()=>{
             location.href= "FinishPage.html";
         })
+    }
+
+    playVideoLunabus(){
+        let videoLunabus = document.getElementById("videoLunabus");
+        videoLunabus.play();
+        videoLunabus.style.visibility = 'visible';
     }
 
 }

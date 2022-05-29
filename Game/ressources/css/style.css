@@ -187,3 +187,6 @@ header {
     flex-direction: column
 }
 
+#videoLunabus{
+    visibility: hidden;
+}
