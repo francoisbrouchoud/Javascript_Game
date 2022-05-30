@@ -25,7 +25,7 @@ export default class Game {
         this.player = player;
         this.day = days[0];
         this.timer = this.day.time;
-        this.alcoolrate = 20;
+        this.alcoolrate = 40;
         this.boardHeight = h;
         this.boardWidth = w;
         this.canvas = canvas;
@@ -52,7 +52,6 @@ export default class Game {
     setTimer(time) {
         this.timer = time;
     }
-
 
     // Contrôler si on peut aller dans la salle à côté.
     checkAndChangeRoom(direction, x, y,playerW, playerH) {
@@ -138,8 +137,27 @@ export default class Game {
         }
     }
 
-    checkAlcohol() {
-        
+    checkAlcohol(){
+        if(this.alcoolrate > 90){
+            this.endGame("drunk");
+        }
+        if(this.alcoolrate <= 0){
+            this.endGame("sleep");
+        }
+        if(this.alcoolrate > 60){
+            //latence
+            this.player.pasPerso = 3;
+        }
+        if(this.alcoolrate < 30){
+            //ralenti
+            this.player.pasPerso = 3;
+        }
+        if(this.player.drink()){
+            this.alcoolrate += 10;
+        }
+        if(this.player.eat()){
+            this.alcoolrate -= 5;
+        }
     }
 
     checkTime(){
