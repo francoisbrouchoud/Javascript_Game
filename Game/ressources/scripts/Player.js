@@ -22,11 +22,14 @@ export default class Player {
      imageHeight=47;
      pasPerso = 5;
 
+     alcoolRate;
+
     constructor(name, age, w, h) {
         this.age = age;
         this.name = name;
         this.posX = w/2 -25;
         this.posY = h/2 -25;
+        this.alcoolRate = 40;
       }
     // déplacement
     move(direction){
@@ -61,12 +64,12 @@ export default class Player {
     }
     // boire
     drink(){
-        console.log("boit");
+        this.alcoolRate += 0.05;
     }
     // dormir
     // manger
     eat(){
-
+        this.alcoolRate -= 0.05;
     }
     // dessiner le personnage
     draw(context){
