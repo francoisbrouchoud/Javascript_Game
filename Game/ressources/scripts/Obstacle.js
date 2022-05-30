@@ -5,6 +5,7 @@ export default class Obstacle{
     height;
     width;
     active; //est-ce qu'il est activé ou pas, déclanche ou pas l'action
+    using;
     action; //on va lui passer une fonction qu'il va executer quand il sera touché
 
 
@@ -14,6 +15,7 @@ export default class Obstacle{
         this.width = width;
         this.height = height;
         this.active = active;
+        this.using = false;
         this.action = action;
     }
 
@@ -105,6 +107,7 @@ export const busPorteAvant = new Obstacle(398,296,30,86, true, (game)=>{
 });
 
 export const nouvelliste = new Obstacle(220,106,307,118, true, (game)=>{
+    game.player.addHat();
     game.validationTask(22);
 });
 

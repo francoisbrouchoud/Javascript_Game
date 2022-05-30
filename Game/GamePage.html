@@ -29,7 +29,7 @@
     </div>
 </header>
 <canvas id="caneva_game" width="720px" height="540px"></canvas>
-
+<div id="hat"></div>
 <video id="videoLunabus" width="720" >
     <source src="ressources/video/DepartLunabus.mp4" type="video/mp4">
 </video>
@@ -68,6 +68,7 @@
         const alcoolRate = document.getElementById("alcoolRate");
         game.player.alcoolRate -= 0.01;
         alcoolRate.innerHTML = Math.trunc(game.player.alcoolRate).toString();
+
     }
 
     document.addEventListener('keydown', (e) => {
@@ -76,6 +77,13 @@
     document.addEventListener('keyup', (e) => {
         game.player.stopMove();
     });
+    canvas.ondragover = function(e) {
+        return false;
+    }
+    canvas.ondrop = function(e) {
+        e.preventDefault();
+        game.player.selectHat(e.dataTransfer.getData('text/plain'));
+    };
 
     window.requestAnimFrame = (function () {
         return window.requestAnimationFrame ||

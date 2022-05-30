@@ -1,4 +1,4 @@
-
+const hats =["green", "red", "blue", "yellow"];
 export default class Player {
 
     name;
@@ -12,12 +12,14 @@ export default class Player {
     isMoving;
     moveInc=0;
     switchMoveImg=0;
-    hasHat; //Est-ce qu'il possède un chapeau ou pas ?
+    hatList = [];
+    hatColor = null;
     // constante
      persoPath = "ressources/images/Steve/SteveFace.png";
      persoMvPath = "ressources/images/Steve/SteveDepl0.png";
      persoHatPath = "ressources/images/Steve/SteveChapeau.png";
      persoHatMvPath = "ressources/images/Steve/SteveDepl0ch.png";
+     hatPath = "ressources/images/Steve/ChapeauNouvelliste.jpg";
      imageWidth=37;
      imageHeight=47;
      pasPerso = 5;
@@ -84,8 +86,8 @@ export default class Player {
 
 
         if(!this.isMoving){
-            if(this.hasHat)
-                image.src = this.persoHatPath
+            if(this.hatColor !==null)
+                image.src = this.persoHatPath.replace("color",this.hatColor);
             else
                 image.src = this.persoPath;
         }
@@ -98,8 +100,9 @@ export default class Player {
                 this.switchMoveImg = 0;
             }
 
-            if(this.hasHat)
-                image.src = this.persoHatMvPath.replace("0",this.moveInc)
+            if(this.hatColor !==null)
+                image.src = this.persoHatMvPath.replace("color",this.hatColor)
+                                                .replace("0",this.moveInc)
             else
                 image.src = this.persoMvPath.replace("0",this.moveInc);
         }
@@ -111,6 +114,24 @@ export default class Player {
         context.restore();
    }
 
+   addHat(){
+        let idx = Math.random()*hats.length;
+        this.hatList.push(hats[idx]);
+        let hatDiv = document.getElementById("hat");
+        let hatimg = document.createElement("img");
+        hatimg.src = this.hatPath.replace("color",hats[idx]);
+        hatimg.setAttribute("tag",hats[idx]);
+        hatimg.ondragstart = function(e) {
+            e.dataTransfer.setData('text/plain' , this.getAttribute("tag"));
+        };
+        hatDiv.appendChild(hatimg);
+   }
+   selectHat(idx){
+        if(idx>=this.hatList.length||idx<=0)
+            this.hatColor=null;
+        else
+            this.hatColor = this.hatList[idx];
+   }
     /*sound(src) {
         this.sound = document.createElement("audio");
         this.sound.src = src;

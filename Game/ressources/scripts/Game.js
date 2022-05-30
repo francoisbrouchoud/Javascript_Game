@@ -126,9 +126,13 @@ export default class Game {
             let {obsX, obsY, obsW, obsH} = obstacle.getPosition();
             let status = obstacle.getStatus();
 
-            if(((x+playerW)>obsX) && (x<(obsX+obsW)) && ((y+playerH)>obsY) && (y < (obsY+obsH)) && status){
+            if(((x+playerW)>obsX) && (x<(obsX+obsW)) && ((y+playerH)>obsY) && (y < (obsY+obsH)) && status && !obstacle.using){
                 console.log("touché");
                 obstacle.action(this);
+                obstacle.using=true;
+            }
+            if(obstacle.using && !(((x+playerW)>obsX) && (x<(obsX+obsW)) && ((y+playerH)>obsY) && (y < (obsY+obsH)))){
+                obstacle.using = false;
             }
 
 
