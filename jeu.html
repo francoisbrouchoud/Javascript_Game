@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="fr">
+<head>
+    <title>624-2 - HTML/CSS/JavaScript</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="ressources/css/style.css">
+</head>
+<body>
+
+<header class="main-header">
+    <h1>HES-SO Vs - 624-2 - HTML/CSS/JavaScript</h1>
+    <nav>
+        <ul>
+            <li class="hamburger">
+                <a href="javascript:void(0);" onclick="displayMenu()"><img src="ressources/images/hamburger_icon.svg" alt="Menu for mobile" ></a>
+            </li>
+            <!-- Different display depending on the screen and the hamburger button -->
+            <div id="menu-links" class="menu-links" >
+                <li>
+                    <a href="description.html">Description</a>
+                </li>
+                <li>
+                    <a href="maquettes.html">Maquettes</a>
+                </li>
+                <li>
+                    <a href="mockup.html">Mockup</a>
+                </li>
+                <li>
+                    <a href="flux.html">Flux</a>
+                </li>
+                <li>
+                    <a href="journal_de_bord.html">Journal de bord</a>
+                </li>
+                <li>
+                    <a href="Game/HomePage.html" target="_blank">Jeu</a>
+                </li>
+            </div>
+        </ul>
+    </nav>
+</header>
+
+<main>
+
+  <a href="Game/HomePage.html">Jouer</a>
+</main>
+
+<footer>
+    <img id="logo" src="ressources/images/logo.png" alt="Logo HEVS">
+</footer>
+
+<script>
+    function displayMenu() {
+        var x = document.getElementById("menu-links");
+        if (x.className === "menu-links") {
+            x.className += " responsive";
+        } else {
+            x.className = "menu-links";
+        }
+    }
+</script>
+
+</body>
+</html>
