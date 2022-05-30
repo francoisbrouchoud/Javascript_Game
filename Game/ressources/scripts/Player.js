@@ -61,7 +61,7 @@ export default class Player {
     }
     // boire
     drink(){
-
+        console.log("boit");
     }
     // dormir
     // manger

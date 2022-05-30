@@ -10,6 +10,7 @@ export default class Game {
     missionDone=0;
     nbTaskDone=0;
     timer;
+    alcoolrate;
     player;
     gameFinish;
 
@@ -24,6 +25,7 @@ export default class Game {
         this.player = player;
         this.day = days[0];
         this.timer = this.day.time;
+        this.alcoolrate = 20;
         this.boardHeight = h;
         this.boardWidth = w;
         this.canvas = canvas;
@@ -50,6 +52,7 @@ export default class Game {
     setTimer(time) {
         this.timer = time;
     }
+
 
     // Contrôler si on peut aller dans la salle à côté.
     checkAndChangeRoom(direction, x, y,playerW, playerH) {
@@ -135,10 +138,15 @@ export default class Game {
         }
     }
 
-    checkAlcohol(){
+    checkAlcohol() {
+        
     }
 
     checkTime(){
+        if(this.timer <= 0){
+            this.endGame("missBus");
+            console.log("fin");
+        }
     }
 
     validationTask(taskId){
@@ -163,20 +171,20 @@ export default class Game {
         switch (statut) {
             case "win":
                 image +="win.jpg";
-                this.playVideoLunabus();
+                //this.playVideoLunabus();
                 break;
             case "drunk":
-                image +="drunk.jpg"
-                this.playVideoLunabus();
+                image +="drunk.jpg";
+                //this.playVideoLunabus();
                 break;
             case "sleep":
-                image +="sleep.jpg"
-                this.playVideoLunabus();
+                image +="sleep.jpg";
+                //this.playVideoLunabus();
                 break;
             default:
             case "missBus":
-                image +="win.jpg"
-                this.playVideoLunabus();
+                image +="win.jpg";
+               // this.playVideoLunabus();
                 break;
         }
         this.canvas.style.backgroundImage = "url("+image+")";

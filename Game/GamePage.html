@@ -15,7 +15,8 @@
 <body class="gameBody">
 <header>
     <div id="state">
-        <p class="caption">Taux d'alcoolémie</p> <input id="alcoolRate" type="range" min="0" max="100" value="60"/>
+        <p class="caption">Taux d'alcoolémie</p><!-- <input id="alcoolRate" type="range" min="0" max="100" value="60"/>-->
+        <p id="alcoolRate"></p>
         <p class="caption">Timer</p>
         <p id="timer"></p>
         <div class="conversation">
@@ -105,6 +106,8 @@
         } else {
             time = time - 1;
         }
-    }, 1000)
+    }, 10)
+
+
 </script>
 </html>
