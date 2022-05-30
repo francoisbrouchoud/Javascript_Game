@@ -92,6 +92,8 @@
     let time = game.timer;
     const timerElement = document.getElementById("timer");
 
+    const alcoolRate = document.getElementById("alcoolRate");
+
     setInterval(() => {
         let minutes = parseInt(time / 60, 10);
         let seconds = parseInt(time % 60, 10);
@@ -106,7 +108,10 @@
         } else {
             time = time - 1;
         }
-    }, 10)
+        //Update the alcool rate
+        game.alcoolrate -= 0.5;
+        alcoolRate.innerHTML = Math.trunc(game.alcoolrate).toString();
+    }, 1000)
 
 
 </script>
