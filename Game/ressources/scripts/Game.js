@@ -10,7 +10,7 @@ export default class Game {
     missionDone=0;
     nbTaskDone=0;
     timer;
-    alcoolrate;
+
     player;
     gameFinish;
 
@@ -21,15 +21,15 @@ export default class Game {
     i;
     j;
 
+
     constructor(player, h, w, canvas) {
         this.player = player;
         this.day = days[0];
         this.timer = this.day.time;
-        this.alcoolrate = 40;
         this.boardHeight = h;
         this.boardWidth = w;
         this.canvas = canvas;
-        this.setNextMission()
+        this.setNextMission();
     }
     setNextMission(){
         if(this.day.mission.length <= this.missionDone){
@@ -124,40 +124,33 @@ export default class Game {
         for (let i=0; i < this.room.obsacle.length; i++) {
             let obstacle = this.room.obsacle[i];
             let {obsX, obsY, obsW, obsH} = obstacle.getPosition();
-            // TODO c'est quoi?
             let status = obstacle.getStatus();
 
-            // TODO Problème
-            //  je me trouve à la possion x=o et y=o et l'obstacle se trouve en x =10 y=10 w=10 h=10
-            // 0-(10+10) < 0 et 0-(10+10)<0
-            if (x - (obsX + obsW) <= 0 && y - (obsY + obsH) <= 0) {
+            if(((x+playerW)>obsX) && (x<(obsX+obsW)) && ((y+playerH)>obsY) && (y < (obsY+obsH)) && status){
+                console.log("touché");
                 obstacle.action(this);
-                //Si l'obstacle est actif, ça déclanchera l'action de l'osbstacle
             }
+
+
         }
     }
 
     checkAlcohol(){
-        if(this.alcoolrate > 90){
+        if(this.player.alcoolRate > 90){
             this.endGame("drunk");
         }
-        if(this.alcoolrate <= 0){
+        if(this.player.alcoolRate <= 0){
             this.endGame("sleep");
         }
-        if(this.alcoolrate > 60){
+        if(this.player.alcoolRate > 60){
             //latence
             this.player.pasPerso = 3;
         }
-        if(this.alcoolrate < 30){
+        if(this.player.alcoolRate < 30){
             //ralenti
             this.player.pasPerso = 3;
         }
-        if(this.player.drink()){
-            this.alcoolrate += 10;
-        }
-        if(this.player.eat()){
-            this.alcoolrate -= 5;
-        }
+
     }
 
     checkTime(){
@@ -189,20 +182,20 @@ export default class Game {
         switch (statut) {
             case "win":
                 image +="win.jpg";
-                //this.playVideoLunabus();
+                this.playVideoLunabus();
                 break;
             case "drunk":
                 image +="drunk.jpg";
-                //this.playVideoLunabus();
+                this.playVideoLunabus();
                 break;
             case "sleep":
                 image +="sleep.jpg";
-                //this.playVideoLunabus();
+                this.playVideoLunabus();
                 break;
             default:
             case "missBus":
                 image +="win.jpg";
-               // this.playVideoLunabus();
+                this.playVideoLunabus();
                 break;
         }
         this.canvas.style.backgroundImage = "url("+image+")";
