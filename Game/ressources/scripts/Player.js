@@ -23,6 +23,7 @@ export default class Player {
      pasPerso = 5;
 
      alcoolRate;
+     sound = new Audio();
 
     constructor(name, age, w, h) {
         this.age = age;
@@ -30,6 +31,8 @@ export default class Player {
         this.posX = w/2 -25;
         this.posY = h/2 -25;
         this.alcoolRate = 40;
+        this.sound
+        this.sound.src = 'ressources/sounds/Drinking.wav';
       }
     // déplacement
     move(direction){
@@ -65,6 +68,7 @@ export default class Player {
     // boire
     drink(){
         this.alcoolRate += 0.05;
+        this.sound.play();
     }
     // dormir
     // manger
@@ -75,6 +79,10 @@ export default class Player {
     draw(context){
 
         var image= new Image();
+
+        //sound("Game/sounds/Walking.mp3");
+
+
         if(!this.isMoving){
             if(this.hasHat)
                 image.src = this.persoHatPath
@@ -102,6 +110,28 @@ export default class Player {
         //Restauration du context
         context.restore();
    }
-    //
+
+    /*sound(src) {
+        this.sound = document.createElement("audio");
+        this.sound.src = src;
+        this.sound.setAttribute("preload", "auto");
+        this.sound.setAttribute("controls", "none");
+        this.sound.style.display = "none";
+        document.body.appendChild(this.sound);
+        /*this.play = function(){
+            this.sound.play();
+        }
+        this.stop = function(){
+            this.sound.pause();
+        }
+    }*/
+
+    /*playSound(){
+        this.sound.play();
+    }*/
+
+    /*pauseSound(){
+        this.sound.pause()
+    }*/
 
 }
