@@ -142,6 +142,9 @@ export default class Game {
         if(this.player.alcoolRate <= 0){
             this.endGame("sleep");
         }
+        if(this.player.alcoolRate < 60 && this.player.alcoolRate > 30){
+            this.player.pasPerso = 5;
+        }
         if(this.player.alcoolRate > 60){
             //latence
             this.player.pasPerso = 3;
