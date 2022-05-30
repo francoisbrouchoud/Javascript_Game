@@ -24,8 +24,8 @@
         </div>
     </div>
     <div id="mission">
-        <h2>Mission 1</h2>
-        <p>Vous devez devez aller au stand Morand et acheter une bouteille de Willamine et la descendre cul sec.</p>
+        <h2 id="missionNbr">Mission 1</h2>
+        <p id="missionTxt">Vous devez devez aller au stand Morand et acheter une bouteille de Willamine et la descendre cul sec.</p>
     </div>
 </header>
 <canvas id="caneva_game" width="720px" height="540px"></canvas>
@@ -60,8 +60,14 @@
     }
 
     function updateInfo() {
-        // texte mission, taux alcoolémie
-        document.querySelector("#alcoolRate").val = game.player.alcoolRate;
+        //Texte mission
+        const missionTxt = document.getElementById("missionTxt");
+        missionTxt.innerHTML = game.mission.tasks[game.nbTaskDone].description;
+
+        //Update the alcool rate
+        const alcoolRate = document.getElementById("alcoolRate");
+        game.player.alcoolRate -= 0.01;
+        alcoolRate.innerHTML = Math.trunc(game.player.alcoolRate).toString();
     }
 
     document.addEventListener('keydown', (e) => {
@@ -92,7 +98,7 @@
     let time = game.timer;
     const timerElement = document.getElementById("timer");
 
-    const alcoolRate = document.getElementById("alcoolRate");
+
 
     setInterval(() => {
         let minutes = parseInt(time / 60, 10);
@@ -108,9 +114,8 @@
         } else {
             time = time - 1;
         }
-        //Update the alcool rate
-        game.alcoolrate -= 0.5;
-        alcoolRate.innerHTML = Math.trunc(game.alcoolrate).toString();
+
+
     }, 1000)
 
 
