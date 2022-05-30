@@ -89,6 +89,7 @@
         requestAnimFrame(frame)
         game.checkCollision();
         game.checkAlcohol();
+        // TODO ça doit rester là?
         game.checkTime();
         draw();
         updateInfo();
@@ -107,6 +108,7 @@
         seconds = seconds < 10 ? "0" + seconds : seconds;
         timerElement.innerText = `${minutes}:${seconds}`;
         game.setTimer(time);
+        // TODO pourquoi pas tout faire dans le set timer?
         // game.checkTime(time);
         if(time <= 0) {
             time = 0;

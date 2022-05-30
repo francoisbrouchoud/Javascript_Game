@@ -139,19 +139,19 @@ export default class Game {
         if(this.player.alcoolRate > 90){
             this.endGame("drunk");
         }
-        if(this.player.alcoolRate <= 0){
+        else if(this.player.alcoolRate <= 0){
             this.endGame("sleep");
         }
-        if(this.player.alcoolRate < 60 && this.player.alcoolRate > 30){
-            this.player.pasPerso = 5;
-        }
-        if(this.player.alcoolRate > 60){
+        else if(this.player.alcoolRate > 60){
             //latence
             this.player.pasPerso = 3;
         }
-        if(this.player.alcoolRate < 30){
+        else if(this.player.alcoolRate < 30){
             //ralenti
             this.player.pasPerso = 3;
+        }
+        else{
+            this.player.pasPerso = 5;
         }
 
     }
@@ -179,6 +179,8 @@ export default class Game {
     }
 
     endGame(statut){
+        if(this.gameFinish)
+            return;
         this.gameFinish = true;
         // afficher l'ecran adéquat
         let image = "ressources/images/EcransFin/";
@@ -223,6 +225,7 @@ export default class Game {
         })
     }
 
+    //TODO faire tourner 1 fois la vidéo lunabus puis mettre ecrans suviant voir dasn set next mission
     playVideoLunabus(){
         let videoLunabus = document.getElementById("videoLunabus");
         videoLunabus.play();
