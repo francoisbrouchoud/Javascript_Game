@@ -1,10 +1,10 @@
-const hats =["green", "red", "blue", "yellow"];
+const hats =["Green", "White", "Pink","Blue"];
 export default class Player {
 
     name;
     age;
     points;
-    alcoolRate;
+    alcoholRate;
     posX;
     posY;
     mission;
@@ -19,12 +19,12 @@ export default class Player {
      persoMvPath = "ressources/images/Steve/SteveDepl0.png";
      persoHatPath = "ressources/images/Steve/SteveChapeauColor.png";
      persoHatMvPath = "ressources/images/Steve/SteveDepl0chColor.png";
-     hatPath = "ressources/images/Steve/ChapeauNouvellisteColor.jpg";
+     hatPath = "ressources/images/Steve/ChapeauNouvellisteColor.png";
      imageWidth=37;
      imageHeight=47;
      pasPerso = 5;
 
-     alcoolRate;
+     alcoholRate;
      sound = new Audio();
 
     constructor(name, age, w, h) {
@@ -32,7 +32,7 @@ export default class Player {
         this.name = name;
         this.posX = w/2 -25;
         this.posY = h/2 -25;
-        this.alcoolRate = 40;
+        this.alcoholRate = 40;
         this.sound
         this.sound.src = 'ressources/sounds/Drinking.wav';
       }
@@ -69,12 +69,12 @@ export default class Player {
     }
     // boire
     drink(){
-        this.alcoolRate += 5;
+        this.alcoholRate += 5;
         this.sound.play();
     }
     // manger
     eat(){
-        this.alcoolRate -= 5;
+        this.alcoholRate -= 5;
     }
     // dessiner le personnage
     draw(context){
@@ -114,11 +114,13 @@ export default class Player {
    }
 
    addHat(){
-        let idx = Math.random()*hats.length;
+        if(this.hatList.length >=10)
+            return;
+        let idx = Math.floor(Math.random()*hats.length);
         this.hatList.push(hats[idx]);
         let hatDiv = document.getElementById("hat");
         let hatimg = document.createElement("img");
-        hatimg.src = this.hatPath.replace("color",hats[idx]);
+        hatimg.src = this.hatPath.replace("Color",hats[idx]);
         hatimg.setAttribute("tag",hats[idx]);
         hatimg.ondragstart = function(e) {
             e.dataTransfer.setData('text/plain' , this.getAttribute("tag"));

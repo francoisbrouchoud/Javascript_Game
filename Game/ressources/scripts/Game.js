@@ -57,8 +57,7 @@ export default class Game {
     }
     updateAlcoholRate(){
         let alcoolRate = document.getElementById("alcoolRate");
-        alcoolRate.value = this.player.alcoolRate;
-        console.log(this.player.alcoolRate);
+        alcoolRate.value = this.player.alcoholRate;
     }
 
     updateTask() {
@@ -171,17 +170,17 @@ export default class Game {
     }
 
     checkAlcohol(){
-        if(this.player.alcoolRate > 90){
+        if(this.player.alcoholRate > 90){
             this.endGame("drunk");
         }
-        else if(this.player.alcoolRate <= 0){
+        else if(this.player.alcoholRate <= 0){
             this.endGame("sleep");
         }
-        else if(this.player.alcoolRate > 60){
+        else if(this.player.alcoholRate > 60){
             //latence
             this.player.pasPerso = 3;
         }
-        else if(this.player.alcoolRate < 30){
+        else if(this.player.alcoholRate < 30){
             //ralenti
             this.player.pasPerso = 3;
         }
