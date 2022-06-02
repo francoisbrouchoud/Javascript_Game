@@ -146,3 +146,40 @@ export const zonePersonnalites = new Obstacle(439, 215, 133, 120, true, (game)=>
     game.validationTask(29);
     game.writeConversation("Salut l'ami!");
 });
+
+
+
+
+export const aleatoireBoisson = new Obstacle(138,111,294,115, true, (game)=>{
+    game.player.drink();
+    game.writeConversation("Glou glou glou.");
+});
+
+export const aleatoireNourriture1 = new Obstacle(447,114,75,108, true, (game)=>{
+    game.player.eat();
+    game.writeConversation("Miam miam miam.");
+});
+
+export const aleatoireBoisson2 = new Obstacle(171,346,75,108, true, (game)=>{
+    game.player.drink();
+    game.writeConversation("Glou glou glou.");
+});
+
+export const cigare = new Obstacle(275,340,295,116, true, (game)=>{
+    game.writeConversation("Un ptit cigare?");
+});
+
+export const aleatoireBoisson3 = new Obstacle(90,345,75,108, true, (game)=>{
+    game.player.eat();
+    game.writeConversation("Glou glou glou.");
+});
+
+export const aleatoireNourriture2 = new Obstacle(90,345,75,108, true, (game)=>{
+    game.player.eat();
+    game.writeConversation("Miam miam miam.");
+});
+
+export const aleatoireNourriture3 = new Obstacle(275,340,295,116, true, (game)=>{
+    game.player.eat();
+    game.writeConversation("Miam miam miam.");
+});
