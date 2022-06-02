@@ -31,6 +31,7 @@ export default class Obstacle{
 
 export const abricool = new Obstacle(138,111,294,115, true, (game)=>{
     game.player.drink();
+    game.writeConversation("Bienvenu à abricool et santé!");
     game.validationTask(28);
 });
 

@@ -16,16 +16,16 @@
 <header>
     <div id="state">
         <p class="caption">Taux d'alcoolémie</p><!-- <input id="alcoolRate" type="range" min="0" max="100" value="60"/>-->
-        <p id="alcoolRate"></p>
+        <input type="range" id="alcoolRate" value="40"></input>
         <p class="caption">Timer</p>
         <p id="timer"></p>
-        <div class="conversation">
+        <div id="conversation">
             <p>Salut <span id="pseudoDisplay"></span> ! Voici ta mission !</p>
         </div>
     </div>
     <div id="mission">
         <h2 id="missionNbr">Mission 1</h2>
-        <p id="missionTxt">Vous devez devez aller au stand Morand et acheter une bouteille de Willamine et la descendre cul sec.</p>
+        <div id="missionTxt"></div>
     </div>
 </header>
 <canvas id="caneva_game" width="720px" height="540px"></canvas>
@@ -40,9 +40,6 @@
     import Player from './ressources/scripts/Player.js';
     import Game from "./ressources/scripts/Game.js";
     const player = JSON.parse(localStorage.getItem("currentPlayer"));
-    const pseudo = player.pseudo;
-    document.getElementById("pseudoDisplay").innerHTML = pseudo;
-    const age = player.age;
 
     //Récupération du canvas et du contexte
     var canvas = document.getElementById("caneva_game");
@@ -50,25 +47,11 @@
     var w = canvas.width;
     var h = canvas.height;
 
-    // TODO récuperation pseudo + age de la page d'avant
-    var game = new Game(new Player(pseudo, age, w, h), h, w, canvas);
-
+    var game = new Game(new Player(player.pseudo, player.age, w, h), h, w, canvas);
 
     function draw() {
         context.clearRect(0, 0, w, h);
         game.player.draw(context);
-    }
-
-    function updateInfo() {
-        //Texte mission
-        const missionTxt = document.getElementById("missionTxt");
-        missionTxt.innerHTML = game.mission.tasks[game.nbTaskDone].description;
-
-        //Update the alcool rate
-        const alcoolRate = document.getElementById("alcoolRate");
-        game.player.alcoolRate -= 0.01;
-        alcoolRate.innerHTML = Math.trunc(game.player.alcoolRate).toString();
-
     }
 
     document.addEventListener('keydown', (e) => {
@@ -100,7 +83,7 @@
         // TODO ça doit rester là?
         game.checkTime();
         draw();
-        updateInfo();
+        game.updateAlcoholRate();
     })();
 
     // Set timer
@@ -116,6 +99,7 @@
         seconds = seconds < 10 ? "0" + seconds : seconds;
         timerElement.innerText = `${minutes}:${seconds}`;
         game.setTimer(time);
+        game.player.alcoolRate -=0.4;
         // TODO pourquoi pas tout faire dans le set timer?
         // game.checkTime(time);
         if(time <= 0) {

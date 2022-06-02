@@ -30,9 +30,11 @@ export default class Game {
         this.boardWidth = w;
         this.canvas = canvas;
         this.setNextMission();
+        this.updateTask();
     }
     setNextMission(){
         if(this.day.mission.length <= this.missionDone){
+            this.playVideoLunabus();
             if(this.day.id >= days.length){
                 return this.endGame("win");
             }
@@ -47,6 +49,35 @@ export default class Game {
         this.j = this.mission.startJ;
         this.room = this.mission.rooms[this.i][this.j];
         this.canvas.style.backgroundImage = "url("+this.room.image+")";
+    }
+
+    writeConversation(text){
+        let convTxt = document.getElementById("conversation");
+        convTxt.innerHTML = text;
+    }
+    updateAlcoholRate(){
+        let alcoolRate = document.getElementById("alcoolRate");
+        alcoolRate.value = this.player.alcoolRate;
+        console.log(this.player.alcoolRate);
+    }
+
+    updateTask() {
+        //Texte mission
+        let missionNbr = document.getElementById("missionNbr");
+        missionNbr.innerText = this.mission.title;
+        let missionTxt = document.getElementById("missionTxt");
+        while (missionTxt.firstChild) {
+            missionTxt.removeChild(missionTxt.firstChild);
+        }
+        for (let task of this.tasks)
+        {
+            let mission = document.createElement("p");
+            mission.innerText = task.description;
+            if(task.done)
+                mission.setAttribute("style","text-decoration: line-through;color:grey");
+
+            missionTxt.appendChild(mission);
+        }
     }
 
     setTimer(time) {
@@ -180,6 +211,7 @@ export default class Game {
             this.missionDone++;
             this.setNextMission();
         }
+        this.updateTask();
     }
 
     endGame(statut){
@@ -191,20 +223,16 @@ export default class Game {
         switch (statut) {
             case "win":
                 image +="win.jpg";
-                this.playVideoLunabus();
                 break;
             case "drunk":
                 image +="drunk.jpg";
-                this.playVideoLunabus();
                 break;
             case "sleep":
                 image +="sleep.jpg";
-                this.playVideoLunabus();
                 break;
             default:
             case "missBus":
-                image +="win.jpg";
-                this.playVideoLunabus();
+                image +="missBus.jpg";
                 break;
         }
         this.canvas.style.backgroundImage = "url("+image+")";
