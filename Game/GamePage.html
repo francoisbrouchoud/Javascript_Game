@@ -99,7 +99,7 @@
         seconds = seconds < 10 ? "0" + seconds : seconds;
         timerElement.innerText = `${minutes}:${seconds}`;
         game.setTimer(time);
-        game.player.alcoolRate -=0.4;
+        game.player.alcoholRate -=0.4;
         // TODO pourquoi pas tout faire dans le set timer?
         // game.checkTime(time);
         if(time <= 0) {
