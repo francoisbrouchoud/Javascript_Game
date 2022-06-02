@@ -134,16 +134,10 @@ export const rhoneFm = new Obstacle(220,106,307,118, true, (game)=>{
 
 export const friendPurple = new Obstacle(478, 250, 33, 40, true, (game)=>{
     game.validationTask(11);
-    game.validationTask(12);
-    game.validationTask(13);
-    game.validationTask(30);
     game.writeConversation("T'étais où?");
 });
 
 export const friendGreen = new Obstacle(343, 404, 46, 56, true, (game)=>{
-    game.validationTask(11);
-    game.validationTask(12);
-    game.validationTask(13);
     game.validationTask(30);
     game.writeConversation("Y'a pas de réseau ici.");
 });
