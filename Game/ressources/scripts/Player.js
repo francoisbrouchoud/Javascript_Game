@@ -86,7 +86,7 @@ export default class Player {
 
         if(!this.isMoving){
             if(this.hatColor !==null)
-                image.src = this.persoHatPath.replace("color",this.hatColor);
+                image.src = this.persoHatPath.replace("Color",this.hatColor);
             else
                 image.src = this.persoPath;
         }
@@ -128,10 +128,7 @@ export default class Player {
         hatDiv.appendChild(hatimg);
    }
    selectHat(idx){
-        if(idx>=this.hatList.length||idx<=0)
-            this.hatColor=null;
-        else
-            this.hatColor = this.hatList[idx];
+        this.hatColor = idx;
    }
     /*sound(src) {
         this.sound = document.createElement("audio");
