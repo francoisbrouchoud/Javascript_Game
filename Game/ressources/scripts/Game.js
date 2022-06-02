@@ -113,7 +113,7 @@ export default class Game {
                     this.i += 1;
                     this.player.setPostion(x,0);
                 }else{
-                    this.player.setPostion(x,0);
+                    this.player.setPostion(x, this.boardHeight-playerH);
                 }
                 break;
 
