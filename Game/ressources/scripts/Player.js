@@ -114,6 +114,8 @@ export default class Player {
    }
 
    addHat(){
+        if(this.hatList.length >=10)
+            return;
         let idx = Math.floor(Math.random()*hats.length);
         this.hatList.push(hats[idx]);
         let hatDiv = document.getElementById("hat");
