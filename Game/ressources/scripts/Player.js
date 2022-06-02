@@ -17,9 +17,9 @@ export default class Player {
     // constante
      persoPath = "ressources/images/Steve/SteveFace.png";
      persoMvPath = "ressources/images/Steve/SteveDepl0.png";
-     persoHatPath = "ressources/images/Steve/SteveChapeau.png";
-     persoHatMvPath = "ressources/images/Steve/SteveDepl0ch.png";
-     hatPath = "ressources/images/Steve/ChapeauNouvelliste.jpg";
+     persoHatPath = "ressources/images/Steve/SteveChapeauColor.png";
+     persoHatMvPath = "ressources/images/Steve/SteveDepl0chColor.png";
+     hatPath = "ressources/images/Steve/ChapeauNouvellisteColor.jpg";
      imageWidth=37;
      imageHeight=47;
      pasPerso = 5;
@@ -100,7 +100,7 @@ export default class Player {
             }
 
             if(this.hatColor !==null)
-                image.src = this.persoHatMvPath.replace("color",this.hatColor)
+                image.src = this.persoHatMvPath.replace("Color",this.hatColor)
                                                 .replace("0",this.moveInc)
             else
                 image.src = this.persoMvPath.replace("0",this.moveInc);
