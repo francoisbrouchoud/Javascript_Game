@@ -1,4 +1,4 @@
-const hats =["Green", "White", "Pink","Blue"];
+const hats =["Green", "White", "Pink","Blue", "Red"];
 export default class Player {
 
     name;
