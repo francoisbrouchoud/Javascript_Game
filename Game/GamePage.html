@@ -81,37 +81,14 @@
         requestAnimFrame(frame)
         game.checkCollision();
         game.checkAlcohol();
-        // TODO ça doit rester là?
-        game.checkTime();
         draw();
         game.updateAlcoholRate();
     })();
 
     // Set timer
-    let time = game.timer;
-    const timerElement = document.getElementById("timer");
-
-
-
     setInterval(() => {
-        let minutes = parseInt(time / 60, 10);
-        let seconds = parseInt(time % 60, 10);
-        minutes = minutes < 10 ? "0" + minutes : minutes;
-        seconds = seconds < 10 ? "0" + seconds : seconds;
-        timerElement.innerText = `${minutes}:${seconds}`;
-        game.setTimer(time);
-        game.player.alcoholRate -=0.4;
-        // TODO pourquoi pas tout faire dans le set timer?
-        // game.checkTime(time);
-        if(time <= 0) {
-            time = 0;
-            game.endGame("missBus");
-        } else {
-            time = time - 1;
-        }
-
-
-    }, 1000)
+        game.setTimer();
+    }, 1000);
 
 
 </script>

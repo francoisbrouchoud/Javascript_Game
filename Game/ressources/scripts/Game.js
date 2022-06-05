@@ -79,8 +79,19 @@ export default class Game {
         }
     }
 
-    setTimer(time) {
-        this.timer = time;
+    setTimer() {
+        let minutes = Math.floor(this.timer / 60);
+        let seconds = this.timer % 60;
+        minutes = minutes < 10 ? "0" + minutes : minutes;
+        seconds = seconds < 10 ? "0" + seconds : seconds;
+        const timerElement = document.getElementById("timer");
+        timerElement.innerText = `${minutes}:${seconds}`;
+        if(this.timer <= 0) {
+            this.endGame("missBus");
+        } else {
+            this.timer = this.timer - 1;
+            this.player.alcoholRate -=0.4;
+        }
     }
 
     // Contrôler si on peut aller dans la salle à côté.
@@ -188,13 +199,6 @@ export default class Game {
             this.player.pasPerso = 5;
         }
 
-    }
-
-    checkTime(){
-        if(this.timer <= 0){
-            this.endGame("missBus");
-            console.log("fin");
-        }
     }
 
     validationTask(taskId){
