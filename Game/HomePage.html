@@ -12,7 +12,7 @@
     <h1>Foire du Valais virtuelle</h1>
 
 
-    <form name="inscription" onsubmit="if(checkPlayPermission() === true) {window.open('GamePage.html');}" method="post" id="playerform">
+    <form name="inscription" onsubmit="checkPlayPermission();" method="post" id="playerform">
         <table class="form">
             <tr>
                 <td>
@@ -56,9 +56,9 @@
             }
 
             if(age >= 18){
-              alert("Vous avez l'age de jouer");
-              localStorage.setItem('currentPlayer',JSON.stringify({"pseudo":pseudo,"age":age}));
-              return true;
+                localStorage.setItem('currentPlayer',JSON.stringify({"pseudo":pseudo,"age":age}));
+                document.getElementById("playerform").action = "GamePage.html";
+                return true;
             }
             else{
                 alert("Vous êtes trop jeune pour jouer !")
