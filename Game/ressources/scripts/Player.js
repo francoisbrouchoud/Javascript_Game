@@ -69,12 +69,12 @@ export default class Player {
     }
     // boire
     drink(){
-        this.alcoholRate += 5;
+        this.alcoholRate += 0.05;
         this.sound.play();
     }
     // manger
     eat(){
-        this.alcoholRate -= 5;
+        this.alcoholRate -= 0.1;
     }
     // dessiner le personnage
     draw(context){
