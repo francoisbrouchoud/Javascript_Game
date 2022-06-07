@@ -52,6 +52,11 @@ export default class Mission{
 
 }
 
+export const missionDemo = new Mission("Mission démo",[chapeauNouvelliste,saluerPersonnalite, boireSucreGpCornut],
+    [[null, gillardRoom, potChambreRoom, aleatoire1Room],
+            [espaceGourmandRoom, null,null, nouvellisteRoom],
+            [aleatoire3Room, rhoneFmRoom,aleatoire2Room,gpCornutRoom]],0,1);
+
 export const missionEntree = new Mission("Mission entrée", [retirerArgent, achatBilletEntree, passerSecurite], [[entreeRoom]], 0,0);
 
 export const missionCerm1 = new Mission("Mission CERM 1", [trouverAmiComptoir, photoRhoneFm, chapeauNouvelliste, achatPot],

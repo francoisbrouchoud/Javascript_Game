@@ -46,7 +46,7 @@ export const boireSucreGpCornut = new Task(27,true, "Désinfecte toi la bouche a
 
 export const degusterAbricool = new Task(28,true, "Déguste un abricool.");
 export const saluerPersonnalite = new Task(29,true, "Salue des personnalités");
-export const trouverAmiAfter = new Task(30,true, "Trouve ton ami.");
+export const trouverAmiAfter = new Task(30,true, "Trouve ton ami. Il a toujours une biere à la main.");
 
 export const entrerAfter = new Task(31,true, "Entre dans l'after.");
 
