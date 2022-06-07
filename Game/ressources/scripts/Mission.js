@@ -41,7 +41,13 @@ export default class Mission{
         this._startJ = startJ;
     }
 
-
+    getTasks(){
+        let taskcopie =[];
+        for (let task of this.tasks){
+            taskcopie.push(task.clone());
+        }
+        return taskcopie;
+    }
     get startI() {
         return this._startI;
     }

@@ -20,6 +20,9 @@ export default class Task{
         this.description = description;
         this.done = false;
     }
+    clone(){
+        return new Task(this.id,this.active,this.description);
+    }
 }
 
 export const achatBilletEntree = new Task(1,true, "Acheter un billet d'entrée");

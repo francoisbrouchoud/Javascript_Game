@@ -40,13 +40,15 @@ export default class Game {
             }
             this.day = days[this.day.id];
             this.missionDone=0;
-            this.timer = this.day.timer;
+            this.timer = this.day.time;
         }
         this.nbTaskDone=0;
-        this.mission = this.day.mission[this.missionDone]
-        this.tasks = this.mission.tasks;
-        this.i = this.mission.startI;
-        this.j = this.mission.startJ;
+
+        this.mission = this.day.mission[this.missionDone];
+
+        this.tasks = this.mission.getTasks();
+        this.i = this.day.mission[this.missionDone].startI;
+        this.j = this.day.mission[this.missionDone].startJ;
         this.room = this.mission.rooms[this.i][this.j];
         this.canvas.style.backgroundImage = "url("+this.room.image+")";
     }
@@ -171,6 +173,9 @@ export default class Game {
                 console.log("touché");
                 obstacle.action(this);
                 obstacle.using=true;
+            }
+            if(obstacle.using && obstacle.continusAction){
+                obstacle.action(this);
             }
             if(obstacle.using && !(((x+playerW)>obsX) && (x<(obsX+obsW)) && ((y+playerH)>obsY) && (y < (obsY+obsH)))){
                 obstacle.using = false;
