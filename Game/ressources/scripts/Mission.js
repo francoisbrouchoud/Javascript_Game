@@ -41,7 +41,13 @@ export default class Mission{
         this._startJ = startJ;
     }
 
-
+    getTasks(){
+        let taskcopie =[];
+        for (let task of this.tasks){
+            taskcopie.push(task.clone());
+        }
+        return taskcopie;
+    }
     get startI() {
         return this._startI;
     }
@@ -51,6 +57,11 @@ export default class Mission{
     }
 
 }
+
+export const missionDemo = new Mission("Mission démo",[chapeauNouvelliste,saluerPersonnalite, boireSucreGpCornut],
+    [[null, gillardRoom, potChambreRoom, aleatoire1Room],
+            [espaceGourmandRoom, null,null, nouvellisteRoom],
+            [aleatoire3Room, rhoneFmRoom,aleatoire2Room,gpCornutRoom]],0,1);
 
 export const missionEntree = new Mission("Mission entrée", [retirerArgent, achatBilletEntree, passerSecurite], [[entreeRoom]], 0,0);
 
