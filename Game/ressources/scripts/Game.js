@@ -125,7 +125,7 @@ export default class Game {
                 break;
 
             case "bas":
-                if(this.i+1 <= roomsArray.length && roomsArray[this.i+1][this.j] != null){
+                if(this.i+1 < roomsArray.length && roomsArray[this.i+1][this.j] != null){
                     this.i += 1;
                     this.player.setPostion(x,0);
                 }else{
