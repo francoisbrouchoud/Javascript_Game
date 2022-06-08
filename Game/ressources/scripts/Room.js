@@ -1,12 +1,31 @@
 import Obstacle, {
-    abricool, after,
-    arret,
+    abricool,
+    after,
+    aleatoireBoisson,
+    aleatoireBoisson2,
+    aleatoireBoisson3,
+    aleatoireNourriture1,
+    aleatoireNourriture2,
+    aleatoireNourriture3,
     bancomat,
     billeterie,
-    bubbleTea, busPorteArriere, busPorteAvant, entreeComptoir, espaceGourmand,
-    fondue, friendGreen, friendPurple, gillard,
-    glacier, gpCornut,
-    marrons, nourriture, nouvelliste, potDeChambre, rhoneFm, swisscom, zonePersonnalites,
+    bubbleTea,
+    cigare,
+    entreeComptoir,
+    espaceGourmand,
+    fondue,
+    friendGreen,
+    friendPurple,
+    gillard,
+    glacier,
+    gpCornut,
+    marrons,
+    nourriture,
+    nouvelliste,
+    potDeChambre,
+    rhoneFm,
+    swisscom,
+    zonePersonnalites,
 } from './Obstacle.js';
 
 export default class Room{
@@ -62,10 +81,8 @@ export const rhoneFmRoom = new Room("Rhône FM", "rhonefm.jpg", [rhoneFm]);
 
 export const aleatoire1Room = new Room("Aleatoire1", "aleatoire1.jpg", [friendPurple, aleatoireBoisson, aleatoireNourriture1, marrons, aleatoireBoisson2, fondue]);
 
-export const aleatoire2Room = new Room("Aleatoire2", "aleatoire2.jpg", []);
 export const aleatoire2Room = new Room("Aleatoire2", "aleatoire2.jpg", [aleatoireBoisson, aleatoireNourriture1, bubbleTea, cigare, aleatoireBoisson3]);
 
-export const aleatoire3Room = new Room("Aleatoire3", "aleatoire3.jpg", []);
 export const aleatoire3Room = new Room("Aleatoire3", "aleatoire3.jpg", [aleatoireBoisson, aleatoireNourriture1, bubbleTea, aleatoireNourriture2, aleatoireNourriture3]);
 
 
