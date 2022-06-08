@@ -64,7 +64,7 @@ export const fondue = new Obstacle(275,340,295,116, true, (game)=>{
 },true);
 
 export const after = new Obstacle(101,0,513,198, true, (game)=>{
-    game.player.drink();
+    //game.player.drink();
     game.writeConversation("Tcheu c'te foule!");
     game.validationTask(31);
 },true);
