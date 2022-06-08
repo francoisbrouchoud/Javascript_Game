@@ -39,6 +39,7 @@ export default class Game {
                 return this.endGame("win");
             }
             this.day = days[this.day.id];
+            this.writeConversation(this.day.text);
             this.missionDone=0;
             this.timer = this.day.timer;
         }
