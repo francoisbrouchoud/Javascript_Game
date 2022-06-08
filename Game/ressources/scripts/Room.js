@@ -61,9 +61,9 @@ export const rhoneFmRoom = new Room("Rhône FM", "rhonefm.jpg", [rhoneFm]);
 
 export const aleatoire1Room = new Room("Aleatoire1", "aleatoire1.jpg", [friendPurple]);
 
-export const aleatoire2Room = new Room("Aleatoire2", "aleatoire2.jpg", [friendPurple]);
+export const aleatoire2Room = new Room("Aleatoire2", "aleatoire2.jpg", []);
 
-export const aleatoire3Room = new Room("Aleatoire3", "aleatoire3.jpg", [friendPurple]);
+export const aleatoire3Room = new Room("Aleatoire3", "aleatoire3.jpg", []);
 
 
 

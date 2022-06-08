@@ -33,7 +33,7 @@ export const retirerArgent = new Task(3,true, "Retirer de l'argent au bancomat")
 
 //Franchir porte devérouillée
 
-export const trouverAmiComptoir = new Task(11,true, "Trouve ton ami.");
+export const trouverAmiComptoir = new Task(11,true, "Trouve ton ami. Il a toujours ses lunettes de soleil");
 
 //export const acheterAboire = new Task(true, afterRoom,  "Trouve ton ami.");
 
