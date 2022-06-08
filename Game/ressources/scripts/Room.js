@@ -1,9 +1,8 @@
 import Obstacle, {
     abricool, after,
-    arret,
     bancomat,
     billeterie,
-    bubbleTea, busPorteArriere, busPorteAvant, entreeComptoir, espaceGourmand,
+    bubbleTea,entreeComptoir, espaceGourmand,
     fondue, friendGreen, friendPurple, gillard,
     glacier, gpCornut,
     marrons, nourriture, nouvelliste, potDeChambre, rhoneFm, swisscom, zonePersonnalites,
@@ -55,8 +54,6 @@ export const swisscomRoom = new Room("Swisscom", "swisscom.jpg", [swisscom, nour
 export const gpCornutRoom = new Room("Grand-père Conrnut", "gpcornut.jpg", [gpCornut, nourriture]);
 
 export const potChambreRoom = new Room("Pot de chambre", "potdechambre.jpg", [potDeChambre, nourriture]);
-
-export const lunabusRoom = new Room("Lunabus", "lunabus.jpg", [arret, busPorteArriere, busPorteAvant]);
 
 export const nouvellisteRoom = new Room("Nouvelliste", "nouvelliste.jpg", [nouvelliste]);
 

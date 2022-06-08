@@ -96,13 +96,13 @@ export const swisscom = new Obstacle(115,284,307,118, true, (game)=>{
 });
 
 export const gpCornut = new Obstacle(115,284,307,118, true, (game)=>{
-    game.player.drink();
+    game.player.drink(0.2);
     game.writeConversation("Un petit sucre?");
     game.validationTask(27);
 },true);
 
 export const potDeChambre = new Obstacle(115,284,307,118, true, (game)=>{
-    game.player.drink();
+    game.player.drink(0.07);
     game.writeConversation("Quelle taille?");
     game.validationTask(23);
 },true);
@@ -113,15 +113,6 @@ export const nourriture = new Obstacle(315,95,307,118, true, (game)=>{
     game.writeConversation("Miam miam.");
     game.validationTask(26);
 },true);
-
-export const arret = new Obstacle(414,10,160,104, true, (game)=>{
-});
-
-export const busPorteArriere = new Obstacle(256,241,30,86, true, (game)=>{
-});
-
-export const busPorteAvant = new Obstacle(398,296,30,86, true, (game)=>{
-});
 
 export const nouvelliste = new Obstacle(220,106,307,118, true, (game)=>{
     game.player.addHat();

@@ -26,6 +26,7 @@ export default class Game {
         this.player = player;
         this.day = days[0];
         this.timer = this.day.time;
+        this.writeConversation(this.day.text);
         this.boardHeight = h;
         this.boardWidth = w;
         this.canvas = canvas;
@@ -41,6 +42,7 @@ export default class Game {
             this.day = days[this.day.id];
             this.missionDone=0;
             this.timer = this.day.time;
+            this.writeConversation(this.day.text);
         }
         this.nbTaskDone=0;
 
@@ -60,6 +62,7 @@ export default class Game {
     updateAlcoholRate(){
         let alcoolRate = document.getElementById("alcoolRate");
         alcoolRate.value = this.player.alcoholRate;
+        alcoolRate.style.accentColor = this.player.alcoholColor;
     }
 
     updateTask() {
@@ -192,16 +195,29 @@ export default class Game {
         else if(this.player.alcoholRate <= 0){
             this.endGame("sleep");
         }
+        else if(this.player.alcoholRate > 80){
+            //latence
+            this.player.alcoholColor = "red";
+            this.player.pasPerso = this.player.pasPersoLent;
+        }
         else if(this.player.alcoholRate > 60){
             //latence
-            this.player.pasPerso = 3;
+            this.player.alcoholColor = "yellow";
+            this.player.pasPerso = this.player.pasPersoLent;
+        }
+        else if(this.player.alcoholRate < 10){
+            //ralenti
+            this.player.alcoholColor = "red";
+            this.player.pasPerso = this.player.pasPersoLent;
         }
         else if(this.player.alcoholRate < 30){
             //ralenti
-            this.player.pasPerso = 3;
+            this.player.alcoholColor = "yellow";
+            this.player.pasPerso = this.player.pasPersoLent;
         }
         else{
-            this.player.pasPerso = 5;
+            this.player.alcoholColor = "green";
+            this.player.pasPerso = this.player.pasPersoStandard;
         }
 
     }

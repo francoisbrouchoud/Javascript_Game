@@ -127,12 +127,10 @@ button{
     border-radius: 6px;
 }
 header {
-    margin-top: 20px;
     display: flex;
     flex-direction: row;
-    width: 720px;
+    width: 790px;
     margin-bottom: 10px;
-
 }
 .caption{
     font-weight: bold;
@@ -143,10 +141,6 @@ header {
     padding: 5px;
 }
 
-#state > p{
-    margin: 5px;
-}
-
 #mission > h2{
     text-align: center;
     margin: 0;
@@ -154,33 +148,16 @@ header {
 
 #state{
     width: 60%;
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 60% 40%;
 }
-.conversation{
+#conversation{
+    grid-column: span 2;
     border: 2px solid black;
-    display: flex;
-    flex-direction: row;
     margin: 5px 5px 0 0;
     padding: 5px;
-    align-items: center;
 }
 
-.conversation > p{
-    flex: 1;
-    margin: 0;
-
-}
-
-#state p,#state input{
-    width: 45%;
-}
-
-#state div{
-    width: 100%;
-}
 .gameBody{
     align-items: center;
     display: flex;
