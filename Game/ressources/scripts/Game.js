@@ -17,20 +17,18 @@ export default class Game {
     boardWidth;
     boardHeight;
     canvas;
-    context;
 
     i;
     j;
 
 
-    constructor(player, h, w, canvas, context) {
+    constructor(player, h, w, canvas) {
         this.player = player;
         this.day = days[0];
         this.timer = this.day.time;
         this.boardHeight = h;
         this.boardWidth = w;
         this.canvas = canvas;
-        this.context = context;
         this.setNextMission();
         this.updateTask();
     }
@@ -270,27 +268,23 @@ export default class Game {
         })
     }
 
-    //TODO faire tourner 1 fois la vidéo lunabus puis mettre ecrans suviant voir dasn set next mission
     async playVideoLunabus(){
         let videoLunabus = document.getElementById("videoLunabus");
-        this.canvas.style.backgroundImage = "none";
-        this.canvas.style.backgroundColor = "rgba(0,0,0,0)";
+        this.canvas.style.backgroundImage = "url(ressources/images/Autres/Goudron.jpg)";
         videoLunabus.play();
-        this.context.drawImage(videoLunabus, 0, 0, this.boardWidth, this.boardHeight);
-
+        let interval;
         await new Promise((resolve, reject) => {
-           setTimeout(() => {
-               let isVideoPlaying = !!(videoLunabus.currentTime > 0 && !videoLunabus.paused && !videoLunabus.ended && videoLunabus.readyState > 2);
-               if(isVideoPlaying){
-                   resolve();
+            interval = setInterval(() => {
+               if(videoLunabus.ended){
+                   return resolve();
                }
-               this.context.drawImage(videoLunabus, 0, 0, this.boardWidth, this.boardHeight)
-               this.context.stroke();
-               this.context.restore();
-           }, 1000/60)
+                let hRatio = (this.boardWidth / videoLunabus.width) * videoLunabus.height;
+
+                this.canvas.getContext('2d').drawImage(videoLunabus, 0, 0, this.boardWidth, hRatio);
+           }, 1000/60);
         });
 
-
+        clearInterval(interval);
     }
 
 }

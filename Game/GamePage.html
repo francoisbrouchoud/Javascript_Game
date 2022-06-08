@@ -32,7 +32,7 @@
     <canvas id="caneva_game" width="720px" height="540px"></canvas>
     <div id="hat"></div>
 </div>
-<video id="videoLunabus" width="720" >
+<video id="videoLunabus" width="1920" height="1080" >
     <source src="ressources/video/DepartLunabus.mp4" type="video/mp4">
 </video>
 </body>
@@ -48,9 +48,12 @@
     var w = canvas.width;
     var h = canvas.height;
 
-    var game = new Game(new Player(player.pseudo, player.age, w, h), h, w, canvas, context);
+    var game = new Game(new Player(player.pseudo, player.age, w, h), h, w, canvas);
+    const isVideoPlaying = video => !!(video.currentTime > 0 && !video.paused && !video.ended && video.readyState > 2);
 
     function draw() {
+        if(isVideoPlaying(document.getElementById("videoLunabus")))
+            return;
         context.clearRect(0, 0, w, h);
         game.player.draw(context);
     }
