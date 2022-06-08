@@ -17,24 +17,26 @@ export default class Game {
     boardWidth;
     boardHeight;
     canvas;
+    context;
 
     i;
     j;
 
 
-    constructor(player, h, w, canvas) {
+    constructor(player, h, w, canvas, context) {
         this.player = player;
         this.day = days[0];
         this.timer = this.day.time;
         this.boardHeight = h;
         this.boardWidth = w;
         this.canvas = canvas;
+        this.context = context;
         this.setNextMission();
         this.updateTask();
     }
-    setNextMission(){
+    async setNextMission(){
         if(this.day.mission.length <= this.missionDone){
-            this.playVideoLunabus();
+            await this.playVideoLunabus();
             if(this.day.id >= days.length){
                 return this.endGame("win");
             }
@@ -228,9 +230,11 @@ export default class Game {
         this.gameFinish = true;
         // afficher l'ecran adéquat
         let image = "ressources/images/EcransFin/";
+        let winStatus = false;
         switch (statut) {
             case "win":
                 image +="win.jpg";
+                winStatus = true;
                 break;
             case "drunk":
                 image +="drunk.jpg";
@@ -244,14 +248,15 @@ export default class Game {
                 break;
         }
         this.canvas.style.backgroundImage = "url("+image+")";
-
+        console.log(winStatus);
         // stocker ses informations de classement en local
         let user={
             "pseudo":this.player.name,
             "day":this.day.id,
             "mission":this.missionDone,
             "task":this.nbTaskDone,
-            "timer":this.timer
+            "timer":this.timer,
+            "win":winStatus
         }
         let wallOfFame = JSON.parse(localStorage.getItem('wallOfFame'));
         if(wallOfFame === undefined || wallOfFame ===null)
@@ -266,10 +271,26 @@ export default class Game {
     }
 
     //TODO faire tourner 1 fois la vidéo lunabus puis mettre ecrans suviant voir dasn set next mission
-    playVideoLunabus(){
+    async playVideoLunabus(){
         let videoLunabus = document.getElementById("videoLunabus");
+        this.canvas.style.backgroundImage = "none";
+        this.canvas.style.backgroundColor = "rgba(0,0,0,0)";
         videoLunabus.play();
-        videoLunabus.style.visibility = 'visible';
+        this.context.drawImage(videoLunabus, 0, 0, this.boardWidth, this.boardHeight);
+
+        await new Promise((resolve, reject) => {
+           setTimeout(() => {
+               let isVideoPlaying = !!(videoLunabus.currentTime > 0 && !videoLunabus.paused && !videoLunabus.ended && videoLunabus.readyState > 2);
+               if(isVideoPlaying){
+                   resolve();
+               }
+               this.context.drawImage(videoLunabus, 0, 0, this.boardWidth, this.boardHeight)
+               this.context.stroke();
+               this.context.restore();
+           }, 1000/60)
+        });
+
+
     }
 
 }

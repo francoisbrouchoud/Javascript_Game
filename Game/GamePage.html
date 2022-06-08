@@ -48,7 +48,7 @@
     var w = canvas.width;
     var h = canvas.height;
 
-    var game = new Game(new Player(player.pseudo, player.age, w, h), h, w, canvas);
+    var game = new Game(new Player(player.pseudo, player.age, w, h), h, w, canvas, context);
 
     function draw() {
         context.clearRect(0, 0, w, h);

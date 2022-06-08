@@ -10,7 +10,7 @@
 
 <div class="main">
     <!-- Si perdu, affiche Game over; sinon Victoire-->
-    <h1>Game over / Victoire</h1>
+    <h1 id="ranking_title_text"></h1>
 
     <table>
         <thead>
@@ -73,6 +73,13 @@
                     && currentPlayer.task===player.task
                     && currentPlayer.timer===player.timer;
                 createRowResult(table,player, index++,isCurrentPlayer);
+            }
+
+            if(currentPlayer.win){
+                document.getElementById("ranking_title_text").innerHTML = 'Victoire';
+            }
+            else {
+                document.getElementById("ranking_title_text").innerHTML = 'Game Over';
             }
         }
     };
