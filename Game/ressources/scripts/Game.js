@@ -26,28 +26,32 @@ export default class Game {
         this.player = player;
         this.day = days[0];
         this.timer = this.day.time;
+        this.writeConversation(this.day.text);
         this.boardHeight = h;
         this.boardWidth = w;
         this.canvas = canvas;
         this.setNextMission();
         this.updateTask();
     }
-    setNextMission(){
+    async setNextMission(){
         if(this.day.mission.length <= this.missionDone){
-            this.playVideoLunabus();
+            await this.playVideoLunabus();
             if(this.day.id >= days.length){
                 return this.endGame("win");
             }
             this.day = days[this.day.id];
             this.writeConversation(this.day.text);
             this.missionDone=0;
-            this.timer = this.day.timer;
+            this.timer = this.day.time;
+            this.writeConversation(this.day.text);
         }
         this.nbTaskDone=0;
-        this.mission = this.day.mission[this.missionDone]
-        this.tasks = this.mission.tasks;
-        this.i = this.mission.startI;
-        this.j = this.mission.startJ;
+
+        this.mission = this.day.mission[this.missionDone];
+
+        this.tasks = this.mission.getTasks();
+        this.i = this.day.mission[this.missionDone].startI;
+        this.j = this.day.mission[this.missionDone].startJ;
         this.room = this.mission.rooms[this.i][this.j];
         this.canvas.style.backgroundImage = "url("+this.room.image+")";
     }
@@ -59,6 +63,7 @@ export default class Game {
     updateAlcoholRate(){
         let alcoolRate = document.getElementById("alcoolRate");
         alcoolRate.value = this.player.alcoholRate;
+        alcoolRate.style.accentColor = this.player.alcoholColor;
     }
 
     updateTask() {
@@ -80,8 +85,19 @@ export default class Game {
         }
     }
 
-    setTimer(time) {
-        this.timer = time;
+    setTimer() {
+        let minutes = Math.floor(this.timer / 60);
+        let seconds = this.timer % 60;
+        minutes = minutes < 10 ? "0" + minutes : minutes;
+        seconds = seconds < 10 ? "0" + seconds : seconds;
+        const timerElement = document.getElementById("timer");
+        timerElement.innerText = `${minutes}:${seconds}`;
+        if(this.timer <= 0) {
+            this.endGame("missBus");
+        } else {
+            this.timer = this.timer - 1;
+            this.player.alcoholRate -=0.4;
+        }
     }
 
     // Contrôler si on peut aller dans la salle à côté.
@@ -162,6 +178,9 @@ export default class Game {
                 obstacle.action(this);
                 obstacle.using=true;
             }
+            if(obstacle.using && obstacle.continusAction){
+                obstacle.action(this);
+            }
             if(obstacle.using && !(((x+playerW)>obsX) && (x<(obsX+obsW)) && ((y+playerH)>obsY) && (y < (obsY+obsH)))){
                 obstacle.using = false;
             }
@@ -177,25 +196,31 @@ export default class Game {
         else if(this.player.alcoholRate <= 0){
             this.endGame("sleep");
         }
+        else if(this.player.alcoholRate > 80){
+            //latence
+            this.player.alcoholColor = "red";
+            this.player.pasPerso = this.player.pasPersoLent;
+        }
         else if(this.player.alcoholRate > 60){
             //latence
-            this.player.pasPerso = 3;
+            this.player.alcoholColor = "yellow";
+            this.player.pasPerso = this.player.pasPersoLent;
+        }
+        else if(this.player.alcoholRate < 10){
+            //ralenti
+            this.player.alcoholColor = "red";
+            this.player.pasPerso = this.player.pasPersoLent;
         }
         else if(this.player.alcoholRate < 30){
             //ralenti
-            this.player.pasPerso = 3;
+            this.player.alcoholColor = "yellow";
+            this.player.pasPerso = this.player.pasPersoLent;
         }
         else{
-            this.player.pasPerso = 5;
+            this.player.alcoholColor = "green";
+            this.player.pasPerso = this.player.pasPersoStandard;
         }
 
-    }
-
-    checkTime(){
-        if(this.timer <= 0){
-            this.endGame("missBus");
-            console.log("fin");
-        }
     }
 
     validationTask(taskId){
@@ -220,9 +245,11 @@ export default class Game {
         this.gameFinish = true;
         // afficher l'ecran adéquat
         let image = "ressources/images/EcransFin/";
+        let winStatus = false;
         switch (statut) {
             case "win":
                 image +="win.jpg";
+                winStatus = true;
                 break;
             case "drunk":
                 image +="drunk.jpg";
@@ -236,14 +263,15 @@ export default class Game {
                 break;
         }
         this.canvas.style.backgroundImage = "url("+image+")";
-
+        console.log(winStatus);
         // stocker ses informations de classement en local
         let user={
             "pseudo":this.player.name,
             "day":this.day.id,
             "mission":this.missionDone,
             "task":this.nbTaskDone,
-            "timer":this.timer
+            "timer":this.timer,
+            "win":winStatus
         }
         let wallOfFame = JSON.parse(localStorage.getItem('wallOfFame'));
         if(wallOfFame === undefined || wallOfFame ===null)
@@ -257,11 +285,23 @@ export default class Game {
         })
     }
 
-    //TODO faire tourner 1 fois la vidéo lunabus puis mettre ecrans suviant voir dasn set next mission
-    playVideoLunabus(){
+    async playVideoLunabus(){
         let videoLunabus = document.getElementById("videoLunabus");
+        this.canvas.style.backgroundImage = "url(ressources/images/Autres/Goudron.jpg)";
         videoLunabus.play();
-        videoLunabus.style.visibility = 'visible';
+        let interval;
+        await new Promise((resolve, reject) => {
+            interval = setInterval(() => {
+               if(videoLunabus.ended){
+                   return resolve();
+               }
+                let hRatio = (this.boardWidth / videoLunabus.width) * videoLunabus.height;
+
+                this.canvas.getContext('2d').drawImage(videoLunabus, 0, 0, this.boardWidth, hRatio);
+           }, 1000/60);
+        });
+
+        clearInterval(interval);
     }
 
 }

@@ -15,8 +15,8 @@
 <body class="gameBody">
 <header>
     <div id="state">
-        <p class="caption">Taux d'alcoolémie</p><!-- <input id="alcoolRate" type="range" min="0" max="100" value="60"/>-->
-        <input type="range" id="alcoolRate" value="40"></input>
+        <p class="caption">Taux d'alcoolémie</p>
+        <input type="range" id="alcoolRate" value="40" min="0" max="100"></input>
         <p class="caption">Timer</p>
         <p id="timer"></p>
         <div id="conversation">
@@ -32,7 +32,7 @@
     <canvas id="caneva_game" width="720px" height="540px"></canvas>
     <div id="hat"></div>
 </div>
-<video id="videoLunabus" width="720" >
+<video id="videoLunabus" width="1920" height="1080" >
     <source src="ressources/video/DepartLunabus.mp4" type="video/mp4">
 </video>
 </body>
@@ -49,8 +49,11 @@
     var h = canvas.height;
 
     var game = new Game(new Player(player.pseudo, player.age, w, h), h, w, canvas);
+    const isVideoPlaying = video => !!(video.currentTime > 0 && !video.paused && !video.ended && video.readyState > 2);
 
     function draw() {
+        if(isVideoPlaying(document.getElementById("videoLunabus")))
+            return;
         context.clearRect(0, 0, w, h);
         game.player.draw(context);
     }
@@ -81,37 +84,14 @@
         requestAnimFrame(frame)
         game.checkCollision();
         game.checkAlcohol();
-        // TODO ça doit rester là?
-        game.checkTime();
         draw();
         game.updateAlcoholRate();
     })();
 
     // Set timer
-    let time = game.timer;
-    const timerElement = document.getElementById("timer");
-
-
-
     setInterval(() => {
-        let minutes = parseInt(time / 60, 10);
-        let seconds = parseInt(time % 60, 10);
-        minutes = minutes < 10 ? "0" + minutes : minutes;
-        seconds = seconds < 10 ? "0" + seconds : seconds;
-        timerElement.innerText = `${minutes}:${seconds}`;
-        game.setTimer(time);
-        game.player.alcoholRate -=0.4;
-        // TODO pourquoi pas tout faire dans le set timer?
-        // game.checkTime(time);
-        if(time <= 0) {
-            time = 0;
-            game.endGame("missBus");
-        } else {
-            time = time - 1;
-        }
-
-
-    }, 1000)
+        game.setTimer();
+    }, 1000);
 
 
 </script>
