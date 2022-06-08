@@ -21,6 +21,8 @@ export default class Game {
     i;
     j;
 
+    wallCollision = new Audio();
+
 
     constructor(player, h, w, canvas) {
         this.player = player;
@@ -32,6 +34,7 @@ export default class Game {
         this.canvas = canvas;
         this.setNextMission();
         this.updateTask();
+        this.wallCollision.src = 'ressources/sounds/WallCollision.wav';
     }
     async setNextMission(){
         if(this.day.mission.length <= this.missionDone){
@@ -112,6 +115,8 @@ export default class Game {
                     this.player.setPostion(this.boardWidth-playerW,y);
                 }else{
                     this.player.setPostion(0,y);
+                    this.writeConversation("Tu t'es pris le mur, impossible d'aller à gauche");
+                    this.wallCollision.play();
                 }
                 break;
 
@@ -121,6 +126,8 @@ export default class Game {
                     this.player.setPostion(0,y);
                 }else{
                     this.player.setPostion(this.boardWidth - playerW,y);
+                    this.writeConversation("Tu t'es pris le mur, impossible d'aller à droite");
+                    this.wallCollision.play();
                 }
                 break;
 
@@ -130,6 +137,8 @@ export default class Game {
                     this.player.setPostion(x,0);
                 }else{
                     this.player.setPostion(x, this.boardHeight-playerH);
+                    this.writeConversation("Tu t'es pris le mur, impossible d'aller en bas");
+                    this.wallCollision.play();
                 }
                 break;
 
@@ -139,6 +148,8 @@ export default class Game {
                     this.player.setPostion(x, this.boardHeight-playerH);
                 }else{
                     this.player.setPostion(x,0);
+                    this.writeConversation("Tu t'es pris le mur, impossible d'aller en haut");
+                    this.wallCollision.play();
                 }
                 break;
         }
@@ -200,21 +211,25 @@ export default class Game {
             //latence
             this.player.alcoholColor = "red";
             this.player.pasPerso = this.player.pasPersoLent;
+            this.writeConversation("Tu frôle le coma, ralenti l'ami");
         }
         else if(this.player.alcoholRate > 60){
             //latence
             this.player.alcoholColor = "yellow";
             this.player.pasPerso = this.player.pasPersoLent;
+            this.writeConversation("J'suis pompette!");
         }
         else if(this.player.alcoholRate < 10){
             //ralenti
             this.player.alcoholColor = "red";
             this.player.pasPerso = this.player.pasPersoLent;
+            this.writeConversation("Je vais mourir de soif, il me faut un verre, vite!");
         }
         else if(this.player.alcoholRate < 30){
             //ralenti
             this.player.alcoholColor = "yellow";
             this.player.pasPerso = this.player.pasPersoLent;
+            this.writeConversation("Fais sec dans c'pays");
         }
         else{
             this.player.alcoholColor = "green";
