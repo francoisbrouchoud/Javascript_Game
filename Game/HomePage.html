@@ -37,43 +37,38 @@
         <button class="regles">Règles</button>
     </div>
 
-
     <p id="distanceFoire"></p>
-
 
     <script>
 
-        function checkPlayPermission(){
-
-            var pseudo = document.forms["inscription"]["pseudo-joueur"].value;
-            var now = new Date(Date.now());
-            var birthDate = new Date(document.forms["inscription"]["date-naissance"].value);
-            var age = now.getFullYear() -birthDate.getFullYear();
-            var month = now.getMonth() - birthDate.getMonth();
+        function checkPlayPermission() {
+            let pseudo = document.forms["inscription"]["pseudo-joueur"].value;
+            let now = new Date(Date.now());
+            let birthDate = new Date(document.forms["inscription"]["date-naissance"].value);
+            let age = now.getFullYear() - birthDate.getFullYear();
+            let month = now.getMonth() - birthDate.getMonth();
 
             if (month < 0 || (month === 0 && now.getDate() < birthDate.getDate())) {
                 age--;
             }
 
-            if(age >= 18){
-                localStorage.setItem('currentPlayer',JSON.stringify({"pseudo":pseudo,"age":age}));
+            if (age >= 18) {
+                localStorage.setItem('currentPlayer', JSON.stringify({"pseudo": pseudo, "age": age}));
                 document.getElementById("playerform").action = "GamePage.html";
                 return true;
-            }
-            else{
+            } else {
                 alert("Vous êtes trop jeune pour jouer !")
                 return false;
             }
         }
 
 
-        const x = document.getElementById("distanceFoire");
+        let x = document.getElementById("distanceFoire");
 
         function getDistance() {
             if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(calculateDistance);
-            }
-            else {
+            } else {
                 x.innerHTML = "La géolocalisation ne fonctionne pas. :(";
             }
         }
@@ -84,24 +79,24 @@
             const longitudeFDV = 7.077710660815801;
             const earthRadius = 6371;
 
-            var myLatitude = position.coords.latitude;
-            var myLongitude = position.coords.longitude;
+            let myLatitude = position.coords.latitude;
+            let myLongitude = position.coords.longitude;
             console.log(" Mes coordonnées actuelles  : " + myLatitude + " " + myLongitude);
-            var dLatitude = convertDegreeToRadian(latitudeFDV-myLatitude);
-            var dLongitude = convertDegreeToRadian(longitudeFDV-myLongitude);
+            let dLatitude = convertDegreeToRadian(latitudeFDV - myLatitude);
+            let dLongitude = convertDegreeToRadian(longitudeFDV - myLongitude);
 
             //Haversine Formula https://www.igismap.com/haversine-formula-calculate-geographic-distance-earth/
-            var a = Math.sin(dLatitude/2) * Math.sin(dLatitude/2) + Math.cos(convertDegreeToRadian(myLatitude))
-                * Math.cos(convertDegreeToRadian(latitudeFDV)) * Math.sin(dLongitude/2) * Math.sin(dLongitude/2);
-            var c = 2*Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
-            var distance = earthRadius*c;
-            var roundedDistance = Math.round(distance);
+            let a = Math.sin(dLatitude / 2) * Math.sin(dLatitude / 2) + Math.cos(convertDegreeToRadian(myLatitude))
+                * Math.cos(convertDegreeToRadian(latitudeFDV)) * Math.sin(dLongitude / 2) * Math.sin(dLongitude / 2);
+            let c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+            let distance = earthRadius * c;
+            let roundedDistance = Math.round(distance);
 
-            x.innerHTML = "La Foire du Valais se situe à " + roundedDistance +  " km de chez vous.";
+            x.innerHTML = "La Foire du Valais se situe à " + roundedDistance + " km de chez vous.";
         }
 
         function convertDegreeToRadian(deg) {
-            return deg * (Math.PI/180)
+            return deg * (Math.PI / 180)
         }
     </script>
 </div>

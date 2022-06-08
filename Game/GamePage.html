@@ -32,7 +32,7 @@
     <canvas id="caneva_game" width="720px" height="540px"></canvas>
     <div id="hat"></div>
 </div>
-<video id="videoLunabus" width="1920" height="1080" >
+<video id="videoLunabus" width="1920" height="1080">
     <source src="ressources/video/DepartLunabus.mp4" type="video/mp4">
 </video>
 </body>
@@ -40,6 +40,7 @@
 <script type="module">
     import Player from './ressources/scripts/Player.js';
     import Game from "./ressources/scripts/Game.js";
+
     const player = JSON.parse(localStorage.getItem("currentPlayer"));
 
     //Récupération du canvas et du contexte
@@ -52,7 +53,7 @@
     const isVideoPlaying = video => !!(video.currentTime > 0 && !video.paused && !video.ended && video.readyState > 2);
 
     function draw() {
-        if(isVideoPlaying(document.getElementById("videoLunabus")))
+        if (isVideoPlaying(document.getElementById("videoLunabus")))
             return;
         context.clearRect(0, 0, w, h);
         game.player.draw(context);
@@ -64,10 +65,10 @@
     document.addEventListener('keyup', (e) => {
         game.player.stopMove();
     });
-    canvas.ondragover = function(e) {
+    canvas.ondragover = function (e) {
         return false;
     }
-    canvas.ondrop = function(e) {
+    canvas.ondrop = function (e) {
         e.preventDefault();
         game.player.selectHat(e.dataTransfer.getData('text/plain'));
     };

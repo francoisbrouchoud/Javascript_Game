@@ -1,23 +1,30 @@
-import Task, {
+import {
     achatBilletEntree,
     achatPot,
+    boirePorteDeNovembre,
+    boireSucreGpCornut,
     chapeauNouvelliste,
+    degusterAbricool,
+    entrerAfter,
+    mangerFoodtruck,
     passerSecurite,
     photoRhoneFm,
-    boirePorteDeNovembre,
     retirerArgent,
     roueSwisscom,
-    trouverAmiComptoir,
-    mangerFoodtruck,
-    boireSucreGpCornut,
-    degusterAbricool,
-    saluerPersonnalite, trouverAmiAfter, entrerAfter
+    saluerPersonnalite,
+    trouverAmiAfter,
+    trouverAmiComptoir
 } from './Task.js';
 import {
-    abricoolRoom, afterRoom,
+    abricoolRoom,
+    afterRoom,
     aleatoire1Room,
-    aleatoire2Room, aleatoire3Room,
-    entreeRoom, espaceGourmandRoom, gillardRoom, gpCornutRoom,
+    aleatoire2Room,
+    aleatoire3Room,
+    entreeRoom,
+    espaceGourmandRoom,
+    gillardRoom,
+    gpCornutRoom,
     nouvellisteRoom,
     potChambreRoom,
     rhoneFmRoom,
@@ -25,7 +32,7 @@ import {
 } from './Room.js';
 
 
-export default class Mission{
+export default class Mission {
 
     title;
     tasks; //liste de taches
@@ -41,13 +48,14 @@ export default class Mission{
         this._startJ = startJ;
     }
 
-    getTasks(){
-        let taskcopie =[];
-        for (let task of this.tasks){
-            taskcopie.push(task.clone());
+    getTasks() {
+        let taskCopy = [];
+        for (let task of this.tasks) {
+            taskCopy.push(task.clone());
         }
-        return taskcopie;
+        return taskCopy;
     }
+
     get startI() {
         return this._startI;
     }
@@ -58,33 +66,33 @@ export default class Mission{
 
 }
 
-export const missionDemo = new Mission("Mission démo",[chapeauNouvelliste,saluerPersonnalite, boireSucreGpCornut],
+export const missionDemo = new Mission("Mission démo", [chapeauNouvelliste, saluerPersonnalite, boireSucreGpCornut],
     [[null, gillardRoom, potChambreRoom, aleatoire1Room],
-            [espaceGourmandRoom, null,null, nouvellisteRoom],
-            [aleatoire3Room, rhoneFmRoom,aleatoire2Room,gpCornutRoom]],0,1);
+        [espaceGourmandRoom, null, null, nouvellisteRoom],
+        [aleatoire3Room, rhoneFmRoom, aleatoire2Room, gpCornutRoom]], 0, 1);
 
-export const missionEntree = new Mission("Mission entrée", [retirerArgent, achatBilletEntree, passerSecurite], [[entreeRoom]], 0,0);
+export const missionEntree = new Mission("Mission entrée", [retirerArgent, achatBilletEntree, passerSecurite], [[entreeRoom]], 0, 0);
 
 export const missionCerm1 = new Mission("Mission CERM 1", [trouverAmiComptoir, photoRhoneFm, chapeauNouvelliste, achatPot],
-    [[null,nouvellisteRoom,null],
-            [aleatoire1Room,aleatoire2Room,potChambreRoom],
-            [null,null,rhoneFmRoom]], 0,1 );
+    [[null, nouvellisteRoom, null],
+        [aleatoire1Room, aleatoire2Room, potChambreRoom],
+        [null, null, rhoneFmRoom]], 0, 1);
 
 export const missionCerm2 = new Mission("Mission CERM 2", [roueSwisscom, boirePorteDeNovembre],
     [[aleatoire3Room, null],
-            [gillardRoom, aleatoire1Room],
-            [null,swisscomRoom]], 0,0);
+        [gillardRoom, aleatoire1Room],
+        [null, swisscomRoom]], 0, 0);
 
 export const missionExterieure = new Mission("Mission extérieure", [mangerFoodtruck, boireSucreGpCornut],
     [[aleatoire2Room, null],
-            [gpCornutRoom, aleatoire3Room]], 0,0);
+        [gpCornutRoom, aleatoire3Room]], 0, 0);
 
 export const missionEspaceGourmand = new Mission("Mission espace Gourmand", [degusterAbricool, saluerPersonnalite],
     [[abricoolRoom, null, null],
-            [nouvellisteRoom, null, espaceGourmandRoom],
-            [aleatoire1Room, swisscomRoom, aleatoire2Room]], 0,0);
+        [nouvellisteRoom, null, espaceGourmandRoom],
+        [aleatoire1Room, swisscomRoom, aleatoire2Room]], 0, 0);
 
 export const missionAfter = new Mission("Mission After", [trouverAmiAfter, entrerAfter],
     [[aleatoire3Room, gpCornutRoom, null],
-            [null, gillardRoom, afterRoom]], 0,0);
+        [null, gillardRoom, afterRoom]], 0, 0);
 

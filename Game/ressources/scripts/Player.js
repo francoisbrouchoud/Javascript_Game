@@ -3,7 +3,7 @@ export default class Player {
 
     name;
     age;
-    points;
+
     alcoholRate;
     alcoholColor;
     posX;
@@ -27,10 +27,8 @@ export default class Player {
     pasPersoLent = 5;
     pasPerso = this.pasPersoStandard;
 
-
-    alcoholRate;
-    drinkSound = new Audio();
-    eatSound = new Audio();
+    drinkSound = new Audio('ressources/sounds/Drinking.wav');
+    eatSound = new Audio('ressources/sounds/Eating.wav');
 
     constructor(name, age, w, h) {
         this.age = age;
@@ -38,8 +36,6 @@ export default class Player {
         this.posX = w / 2 - 25;
         this.posY = h / 2 - 25;
         this.alcoholRate = 40;
-        this.drinkSound.src = 'ressources/sounds/Drinking.wav';
-        this.eatSound.src = 'ressources/sounds/Eating.wav';
     }
 
     // déplacement
@@ -91,11 +87,7 @@ export default class Player {
 
     // dessiner le personnage
     draw(context) {
-
-        var image = new Image();
-
-        //sound("Game/sounds/Walking.mp3");
-
+        let image = new Image();
 
         if (!this.isMoving) {
             if (this.hatColor !== null)
@@ -119,10 +111,6 @@ export default class Player {
         }
 
         context.drawImage(image, this.posX, this.posY, this.imageWidth, this.imageHeight)
-        context.stroke();
-
-        //Restauration du context
-        context.restore();
     }
 
     addHat() {
@@ -143,28 +131,4 @@ export default class Player {
     selectHat(idx) {
         this.hatColor = idx;
     }
-
-    /*sound(src) {
-        this.sound = document.createElement("audio");
-        this.sound.src = src;
-        this.sound.setAttribute("preload", "auto");
-        this.sound.setAttribute("controls", "none");
-        this.sound.style.display = "none";
-        document.body.appendChild(this.sound);
-        /*this.play = function(){
-            this.sound.play();
-        }
-        this.stop = function(){
-            this.sound.pause();
-        }
-    }*/
-
-    /*playSound(){
-        this.sound.play();
-    }*/
-
-    /*pauseSound(){
-        this.sound.pause()
-    }*/
-
 }

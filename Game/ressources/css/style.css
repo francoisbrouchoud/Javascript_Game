@@ -1,4 +1,4 @@
-*{
+* {
     font-family: 'Helvetica', 'Arial';
 }
 
@@ -8,7 +8,7 @@
     margin-top: 5%;
 }
 
-.main{
+.main {
     position: center;
     width: 80%;
     max-width: 1000px;
@@ -23,40 +23,41 @@
     align-items: center;
 }
 
-.main h1{
+.main h1 {
     font-size: 3em;
 }
 
-.form tr td{
+.form tr td {
     text-align: left;
 }
 
-.form{
+.form {
     border: none;
 }
 
-.form td{
+.form td {
     border: none;
 }
 
-.form label{
+.form label {
     font-size: 1.5em;
 }
-.form input{
+
+.form input {
     height: 2em;
     max-width: 200px;
     width: 100%;
 }
 
-.form tr{
+.form tr {
     text-align: left;
 }
 
-.buttons{
+.buttons {
     margin-top: 50px;
 }
 
-.buttons button{
+.buttons button {
 
     width: 200px;
     height: 50px;
@@ -64,32 +65,33 @@
     margin-right: 30px;
 }
 
-.saisie form{
+.saisie form {
     display: flex;
 }
-.saisie label{
+
+.saisie label {
     display: block;
     margin-right: 10px;
 }
 
-button{
+button {
     font-size: 1.5em;
 }
 
-.jouer:hover{
+.jouer:hover {
     background-color: limegreen;
 }
 
-.regles:hover{
+.regles:hover {
     background-color: deepskyblue;
 }
 
-.quitter:hover{
+.quitter:hover {
     background-color: orangered;
 }
 
 
-table, th, td{
+table, th, td {
     padding: 9px;
     border: 1px solid black;
     border-collapse: collapse;
@@ -99,83 +101,92 @@ table, th, td{
     font-size: 1.2em;
 }
 
-table{
+table {
     margin-top: 40px;
     border: 2px black solid;
 }
 
 
-th{
+th {
     height: 12px;
 }
 
-.pseudoRow{
+.pseudoRow {
     width: 160px;
 }
-.timerRow{
+
+.timerRow {
     width: 75px;
 }
-.jourRow{
+
+.jourRow {
     width: 95px;
 }
 
-button{
+button {
     margin-top: 30px;
     padding: 5px;
     background-color: transparent;
     border: 1px solid black;
     border-radius: 6px;
 }
+
 header {
     display: flex;
     flex-direction: row;
     width: 790px;
     margin-bottom: 10px;
 }
-.caption{
+
+.caption {
     font-weight: bold;
 }
-#mission{
+
+#mission {
     width: 40%;
     border: 2px solid black;
     padding: 5px;
 }
 
-#mission > h2{
+#mission > h2 {
     text-align: center;
     margin: 0;
 }
 
-#state{
+#state {
     width: 60%;
     display: grid;
     grid-template-columns: 60% 40%;
 }
-#conversation{
+
+#conversation {
     grid-column: span 2;
     border: 2px solid black;
     margin: 5px 5px 0 0;
     padding: 5px;
 }
 
-.gameBody{
+.gameBody {
     align-items: center;
     display: flex;
     flex-direction: column
 }
 
-#videoLunabus{
+#videoLunabus {
     visibility: hidden;
 }
-#hat img{
+
+#hat img {
     width: 63px;
     height: 48px;
 }
-#gameBoard{
+
+#gameBoard {
     display: flex;
     align-content: center;
 }
-#hat{
+
+#hat {
     display: flex;
     flex-direction: column;
 }
