@@ -29,7 +29,8 @@ export default class Player {
 
 
     alcoholRate;
-    sound = new Audio();
+    drinkSound = new Audio();
+    eatSound = new Audio();
 
     constructor(name, age, w, h) {
         this.age = age;
@@ -37,8 +38,8 @@ export default class Player {
         this.posX = w / 2 - 25;
         this.posY = h / 2 - 25;
         this.alcoholRate = 40;
-        this.sound.src = 'ressources/sounds/Drinking.wav';
-
+        this.drinkSound.src = 'ressources/sounds/Drinking.wav';
+        this.eatSound.src = 'ressources/sounds/Eating.wav';
     }
 
     // déplacement
@@ -79,12 +80,13 @@ export default class Player {
     // boire
     drink(quantity = 0.1) {
         this.alcoholRate += quantity;
-        this.sound.play();
+        this.drinkSound.play();
     }
 
     // manger
     eat() {
         this.alcoholRate -= 0.3;
+        this.eatSound.play();
     }
 
     // dessiner le personnage
