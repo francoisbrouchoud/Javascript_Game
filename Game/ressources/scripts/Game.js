@@ -24,7 +24,6 @@ export default class Game {
 
     wallCollision = new Audio();
 
-
     constructor(player, h, w, canvas) {
         this.player = player;
         this.day = days[0];
@@ -73,8 +72,8 @@ export default class Game {
     }
 
     updateTask() {
-        //Texte mission
         let missionNbr = document.getElementById("missionNbr");
+        //Mission text
         missionNbr.innerText = this.mission.title;
         let missionTxt = document.getElementById("missionTxt");
         while (missionTxt.firstChild) {
@@ -105,7 +104,7 @@ export default class Game {
         }
     }
 
-    // Contrôler si on peut aller dans la salle à côté.
+    //Check if it is possible to go to the next room
     checkAndChangeRoom(direction, x, y, playerW, playerH) {
 
         let roomsArray = this.mission.rooms;
@@ -163,19 +162,19 @@ export default class Game {
             return;
         let {x, y, playerW, playerH} = this.player.getPosition();
 
-        //Il va vers la gauche
+        //Go left
         if (x < 0) {
             this.checkAndChangeRoom("gauche", x, y, playerW, playerH);
         }
-        //Il va en haut
+        //Go up
         if (y < 0) {
             this.checkAndChangeRoom("haut", x, y, playerW, playerH);
         }
-        //Il va en bas
+        //Go down
         if (y > this.boardHeight - playerH) {
             this.checkAndChangeRoom("bas", x, y, playerW, playerH);
         }
-        //Il va à droite
+        //Go right
         if (x > this.boardWidth - playerW) {
             this.checkAndChangeRoom("droite", x, y, playerW, playerH);
         }
@@ -195,8 +194,6 @@ export default class Game {
             if (obstacle.using && !(((x + playerW) > obsX) && (x < (obsX + obsW)) && ((y + playerH) > obsY) && (y < (obsY + obsH)))) {
                 obstacle.using = false;
             }
-
-
         }
     }
 
@@ -206,39 +203,38 @@ export default class Game {
         } else if (this.player.alcoholRate <= 0) {
             this.endGame("sleep");
         } else if (this.player.alcoholRate > 80) {
-            //latence
             this.player.alcoholColor = "red";
+            //Slow down
             this.player.pasPerso = this.player.pasPersoLent;
             if(this.lastWarning !== "80")
-                this.writeConversation("Tu frôle le coma, ralenti l'ami");
+                this.writeConversation("Tu frôles le coma, ralentis l'ami !");
             this.lastWarning = "80";
         } else if (this.player.alcoholRate > 60) {
-            //latence
             this.player.alcoholColor = "yellow";
+            //Slow down
             this.player.pasPerso = this.player.pasPersoLent;
             if(this.lastWarning !== "60")
-                this.writeConversation("J'suis pompette!");
+                this.writeConversation("J'suis pompette !");
             this.lastWarning = "60";
         } else if (this.player.alcoholRate < 10) {
-            //ralenti
             this.player.alcoholColor = "red";
+            //Slow down
             this.player.pasPerso = this.player.pasPersoLent;
             if(this.lastWarning !== "10")
-                this.writeConversation("Je vais mourir de soif, il me faut un verre, vite!");
+                this.writeConversation("Je vais mourir de soif, il me faut un verre, vite !");
             this.lastWarning = "10";
         } else if (this.player.alcoholRate < 30) {
-            //ralenti
             this.player.alcoholColor = "yellow";
+            //Slow down
             this.player.pasPerso = this.player.pasPersoLent;
             if(this.lastWarning === "30")
-                this.writeConversation("Fais sec dans c'pays");
+                this.writeConversation("Fais sec dans c'pays !");
             this.lastWarning = "30";
         } else {
             this.lastWarning ="";
             this.player.alcoholColor = "green";
             this.player.pasPerso = this.player.pasPersoStandard;
         }
-
     }
 
     validationTask(taskId) {
@@ -261,7 +257,7 @@ export default class Game {
         if (this.gameFinish)
             return;
         this.gameFinish = true;
-        // afficher l'ecran adéquat
+        //Display the appropriate end screen
         let image = "ressources/images/EcransFin/";
         let winStatus = false;
         switch (status) {
@@ -282,7 +278,7 @@ export default class Game {
         }
         this.canvas.style.backgroundImage = "url(" + image + ")";
 
-        // stocker ses informations de classement en local
+        //Store ranking information
         let user = {
             "pseudo": this.player.name,
             "day": this.day.id,
@@ -321,5 +317,4 @@ export default class Game {
 
         clearInterval(interval);
     }
-
 }

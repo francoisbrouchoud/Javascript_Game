@@ -15,7 +15,7 @@ export default class Player {
     switchMoveImg = 0;
     hatList = [];
     hatColor = null;
-    // constante
+
     persoPath = "ressources/images/Steve/SteveFace.png";
     persoMvPath = "ressources/images/Steve/SteveDepl0.png";
     persoHatPath = "ressources/images/Steve/SteveChapeauColor.png";
@@ -38,7 +38,7 @@ export default class Player {
         this.alcoholRate = 40;
     }
 
-    // déplacement
+    //Move the character
     move(direction) {
         switch (direction) {
             case 'w':
@@ -73,19 +73,19 @@ export default class Player {
         return {x: this.posX, y: this.posY, playerW: this.imageWidth, playerH: this.imageHeight}
     }
 
-    // boire
+    //Drink
     drink(quantity = 0.1) {
         this.alcoholRate += quantity;
         this.drinkSound.play();
     }
 
-    // manger
+    //Eat
     eat() {
         this.alcoholRate -= 0.3;
         this.eatSound.play();
     }
 
-    // dessiner le personnage
+    //Draw the character
     draw(context) {
         let image = new Image();
 

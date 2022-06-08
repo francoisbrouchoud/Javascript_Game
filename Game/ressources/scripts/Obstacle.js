@@ -4,10 +4,12 @@ export default class Obstacle {
     posY;
     height;
     width;
-    active; //est-ce qu'il est activé ou pas, déclanche ou pas l'action
+    //Triggers or not the action
+    active;
     using;
     continuousAction;
-    action; //on va lui passer une fonction qu'il va executer quand il sera touché
+    //Function to be executed when touched
+    action;
 
 
     constructor(posX, posY, width, height, active, action, continusAction = false) {
@@ -33,7 +35,7 @@ export default class Obstacle {
 
 export const abricool = new Obstacle(138, 111, 294, 115, true, (game) => {
     game.player.drink();
-    game.writeConversation("Boit de l'abricool, reste cool!");
+    game.writeConversation("Bois de l'abricool, reste cool !");
     game.validationTask(28);
 }, (game)=>{
     game.player.drink();
@@ -49,7 +51,7 @@ export const gillard = new Obstacle(138, 111, 294, 115, true, (game) => {
 
 export const glacier = new Obstacle(447, 114, 75, 108, true, (game) => {
     game.player.eat();
-    game.writeConversation("Deux ou trois boules?");
+    game.writeConversation("Deux ou trois boules ?");
 }, (game)=>{
     game.player.eat();
 });
@@ -101,7 +103,7 @@ export const entreeComptoir = new Obstacle(190, 0, 326, 127, true, (game) => {
 
 export const billeterie = new Obstacle(355, 310, 307, 118, true, (game) => {
     game.validationTask(1);
-    game.writeConversation("Vous ne voulez pas la permanente? \n" + "Non non je viens juste pour ce soir.");
+    game.writeConversation("Vous ne voulez pas la permanente? \n" + "Non, non, je viens juste pour ce soir.");
 });
 
 export const swisscom = new Obstacle(115, 284, 307, 118, true, (game) => {
@@ -111,7 +113,7 @@ export const swisscom = new Obstacle(115, 284, 307, 118, true, (game) => {
 
 export const gpCornut = new Obstacle(115, 284, 307, 118, true, (game) => {
     game.player.drink(0.2);
-    game.writeConversation("Un petit sucre?");
+    game.writeConversation("Un petit sucre ?");
     game.validationTask(27);
 }, (game)=>{
     game.player.drink(0.2);
@@ -119,7 +121,7 @@ export const gpCornut = new Obstacle(115, 284, 307, 118, true, (game) => {
 
 export const potDeChambre = new Obstacle(115, 284, 307, 118, true, (game) => {
     game.player.drink(0.07);
-    game.writeConversation("Quelle taille?");
+    game.writeConversation("Quelle taille ?");
     game.validationTask(23);
 }, (game)=>{
     game.player.drink(0.07);
@@ -147,7 +149,7 @@ export const rhoneFm = new Obstacle(220, 106, 307, 118, true, (game) => {
 
 export const friendPurple = new Obstacle(478, 250, 33, 40, true, (game) => {
     game.validationTask(11);
-    game.writeConversation("T'étais où?");
+    game.writeConversation("T'étais où ?");
 });
 
 export const friendGreen = new Obstacle(343, 404, 46, 56, true, (game) => {
@@ -157,7 +159,7 @@ export const friendGreen = new Obstacle(343, 404, 46, 56, true, (game) => {
 
 export const zonePersonnalites = new Obstacle(439, 215, 133, 120, true, (game) => {
     game.validationTask(29);
-    game.writeConversation("Salut l'ami!");
+    game.writeConversation("Salut l'ami !");
 });
 
 

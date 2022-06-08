@@ -29,7 +29,8 @@ import {
 } from './Obstacle.js';
 
 class Room {
-    obsacle; // pour chaque obstacle, on va dire quelle action on va déclancher -> liste
+    //For each obstacle, we'll say which action we'll trigger -> list
+    obsacle;
 
     name;
     image;

@@ -1,4 +1,4 @@
-// récupérer classement du wallofFame
+// Get wall of fame rankings
 let xhr = new XMLHttpRequest();
 let jsonArr;
 let method = "GET";
@@ -7,10 +7,10 @@ let jsonRequestURL = "gameData/WallOfFame.json";
 xhr.open(method, jsonRequestURL, true);
 xhr.onreadystatechange = function () {
     if (xhr.readyState == 4 && xhr.status == 200) {
-        // we convert your JSON into JavaScript object
+        // Convert JSON into JavaScript object
         jsonArr = JSON.parse(xhr.responseText);
 
-        // récupérer info du local storage
+        // Get info from localstorage
         let jsonArray2 = JSON.parse(localStorage.getItem('wallOfFame'));
         let scoreList;
         if (jsonArray2 !== undefined && jsonArray2 !== null)
@@ -18,10 +18,10 @@ xhr.onreadystatechange = function () {
         else
             scoreList = jsonArr;
 
-        // trier walloffame
+        // Sort wall of fame
         scoreList.sort(sortResult);
 
-        // afficher dans le tableau
+        // Display wall of fame in a table
         let table = document.getElementById("score");
         let index = 1;
         let currentPlayer = JSON.parse(localStorage.getItem('currentResult'));
@@ -42,7 +42,6 @@ xhr.onreadystatechange = function () {
     }
 };
 xhr.send(null);
-
 
 function sortResult(objet1, objet2) {
     if (objet1.day < objet2.day)

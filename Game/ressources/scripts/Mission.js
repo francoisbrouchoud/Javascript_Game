@@ -35,8 +35,9 @@ import {
 export default class Mission {
 
     title;
-    tasks; //liste de taches
-    rooms; // pièces quelle a
+    //List of tasks
+    tasks;
+    rooms;
     startRoom;
 
     constructor(title, tasks, rooms, startI, startJ) {
@@ -87,7 +88,7 @@ export const missionExterieure = new Mission("Mission extérieure", [mangerFoodt
     [[aleatoire2Room, null],
         [gpCornutRoom, aleatoire3Room]], 0, 0);
 
-export const missionEspaceGourmand = new Mission("Mission espace Gourmand", [degusterAbricool, saluerPersonnalite],
+export const missionEspaceGourmand = new Mission("Mission Espace Gourmand", [degusterAbricool, saluerPersonnalite],
     [[abricoolRoom, null, null],
         [nouvellisteRoom, null, espaceGourmandRoom],
         [aleatoire1Room, swisscomRoom, aleatoire2Room]], 0, 0);
