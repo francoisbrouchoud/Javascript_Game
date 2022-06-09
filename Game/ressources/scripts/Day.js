@@ -36,4 +36,5 @@ export const day5 = new Day(5, "vendredi", "Vendredi, ouf!", 140, [missionEntree
 export const day6 = new Day(6, "samedi", "Samedi, aïe...", 120, [missionEntree, missionCerm2, missionEspaceGourmand, missionExterieure, missionAfter]);
 export const day7 = new Day(7, "dimanche", "Dimanche, fallait prendre la permanente.", 100, [missionEntree, missionCerm1, missionExterieure, missionCerm2, missionEspaceGourmand, missionAfter]);
 
-export const days = [day1, day2, day3, day4, day5, day6, day7];
+//export const days = [day1, day2, day3, day4, day5, day6, day7];
+export const days = [dayDemo];
