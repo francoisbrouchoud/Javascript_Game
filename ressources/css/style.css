@@ -190,6 +190,7 @@ table tr a:hover  {
 #mockup img {
     display: block;
     margin: 20px auto;
+    max-width: 100%;
 }
 
 .ecran {
@@ -206,7 +207,7 @@ table tr a:hover  {
 }
 
 .perso {
-    height: 100px;
+    height: 70px;
 }
 
 #mockup h4 {
@@ -260,6 +261,9 @@ table tr a:hover  {
     }
     th{
         display: none;
+    }
+    .perso-stands{
+        grid-template-columns: auto auto auto auto;
     }
 }
 
