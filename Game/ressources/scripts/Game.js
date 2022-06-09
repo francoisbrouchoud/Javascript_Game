@@ -98,7 +98,7 @@ export default class Game {
         timerElement.innerText = `${minutes}:${seconds}`;
         if (this.timer <= 0) {
             this.endGame("missBus");
-        } else {
+        } else if(!this.gameFinish){
             this.timer = this.timer - 1;
             this.player.alcoholRate -= 0.4;
         }
